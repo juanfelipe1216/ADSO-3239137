@@ -1,0 +1,11 @@
+Análisis del dominio
+
+// // // // // // // // // // // // // // // // // //
+
+Descomposición de Modulos
+
+Ubicación: Continente, País, Departamento, Ciudad, Barrio.
+
+Comercial: Categoría, Producto, Factura, Detalle_Factura.
+
+Seguridad: Persona, Usuario, Rol.
