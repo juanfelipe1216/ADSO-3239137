@@ -1,0 +1,9 @@
+# ADR-002: stock y préstamos simultáneos
+
+- Estado: propuesta, 12 de noviembre de 2026.
+- Contexto: dos operadores pueden entregar la última unidad, devolver la misma línea o superar el máximo de un investigador con equipos distintos.
+- Decisión: usar `xmin::text` de PostgreSQL como testigo transitorio en lecturas/escrituras optimistas de equipo. La operación se confirma solo si todas las escrituras condicionadas afectan una fila. Un CHECK protege el rango. Un bloqueo transaccional asesor derivado del id del investigador serializa sus operaciones mientras se verifican pendientes y vencidos. La devolución escribe solo si `returned_at IS NULL` y restituye stock en esa transacción.
+- Alternativas: contador en memoria (no coordina procesos); campo version propio (agrega esquema innecesario); únicamente CHECK de stock (no protege máximo por investigador); bloqueo global (impide paralelismo ajeno al conflicto).
+- Consecuencias: error de versión al prestar -> rollback y 409; orden estable al escribir varios equipos; las colisiones del identificador de bloqueo solo pueden serializar más, nunca saltarse una regla. `xmin` no es un id duradero ni se conserva entre solicitudes. Las carreras entre baja, edición de unidades, préstamo y devolución requieren pruebas reales.
+- Evidencia requerida: dos conexiones independientes y barrera de inicio; última unidad produce 201/409; devolución doble produce 200/409; investigador con una pendiente solo puede recibir una adicional aunque dos peticiones compitan. No sirve ejecutar secuencialmente ni usar SQLite.
+- Referencia técnica: [columnas de sistema PostgreSQL 16](https://www.postgresql.org/docs/16/ddl-system-columns.html). Usar ese testigo es una decisión de esta arquitectura; la documentación describe su semántica y límites, no garantiza el resultado de nuestro adaptador.
