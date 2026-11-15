@@ -47,6 +47,8 @@ Mensajes describen lo que cambió, por ejemplo `feat(api): enforce researcher lo
 
 ## Cierre de cada sesión
 
+Acuerdo actualizado el 15 de noviembre: trabajar un bloque concreto por sesión y publicar un único commit después de comprobarlo. Esperar a que el usuario retome antes de iniciar el bloque siguiente. Una tarea puede quedar parcial entre sesiones; no se agrupan varios bloques en pocos minutos ni se espacian artificialmente las fechas de Git. La nueva sesión del 15 comprende únicamente el caso de login con fakes de T-07.
+
 1. Revisar `git diff` y ejecutar las comprobaciones que correspondan al cambio.
 2. Añadir rutas específicas, inspeccionar `git diff --cached --check` y `git diff --cached --stat`.
 3. Registrar commit con propósito único; no usar amend, rebase, fechas manuales ni force-push.
