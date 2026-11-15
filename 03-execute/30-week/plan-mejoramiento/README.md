@@ -6,7 +6,7 @@ Aplicación para administrar equipos, investigadores, préstamos y devoluciones 
 
 ## Estado del 14 de noviembre de 2026
 
-La base Laravel ya arranca en un contenedor y su endpoint de salud está probado (T-01). **El producto de negocio aún está pendiente:** no hay login, catálogo ni préstamos operativos. Se verificaron 2 de las 23 tareas: arranque y migración inicial. La ruta confirmada por el usuario es `03-execute/30-week/plan-mejoramiento/`.
+La base Laravel y PostgreSQL arrancan en contenedores. **El producto de negocio aún está pendiente:** no hay login, catálogo ni préstamos operativos. Se verificaron 3 de las 23 tareas: arranque, migración inicial y objetos de valor. La ruta confirmada por el usuario es `03-execute/30-week/plan-mejoramiento/`.
 
 El primer avance documental corresponde al 12 de noviembre. Los ocho días de actividad solo quedarán cumplidos al completar y registrar las sesiones reales hasta el 19; los commits de sincronización del material del curso no sustituyen los avances del proyecto.
 

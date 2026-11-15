@@ -1,12 +1,12 @@
 # Tareas y trazabilidad
 
-**Estado al 14 de noviembre: 2/23 tareas de producto verificadas.** T-01 cuenta con [evidencia de ejecución](evidence/2026-11-14-api-bootstrap.md). Las demás tareas siguen pendientes. Las fechas objetivo originales se conservan para mostrar el desvío del cronograma.
+**Estado al 14 de noviembre: 3/23 tareas de producto verificadas.** T-01, T-02 y T-03 cuentan con evidencias en `docs/evidence/`. Las demás tareas siguen pendientes. Las fechas objetivo originales se conservan para mostrar el desvío del cronograma.
 
 | ID | Tarea adaptada | Depende de | Requisito / evidencia de cierre | Objetivo | Estado |
 |---|---|---|---|---|---|
 | T-01 | Laravel, estructura y salud | - | `/api/v1/health` devuelve status ok; contenedor ejecutable | 13 | Verificada el 14 |
 | T-02 | Migración de seis tablas y cinco categorías | T-01 | Esquema exacto, UUID, FK, UNIQUE, CHECK de stock, sin DEFAULT | 13 | Verificada el 14 |
-| T-03 | Reference, Quantity, DocumentNumber, DateRange | T-01 | Pruebas de formato y normalización; total positivo; fin >= inicio | 13 | Pendiente |
+| T-03 | Reference, Quantity, DocumentNumber, DateRange | T-01 | Pruebas de formato y normalización; total positivo; fin >= inicio | 13 | Verificada el 14 |
 | T-04 | Equipment: retirar, restituir, cambiar total, baja | T-03 | HU-03/HU-04; stock siempre en rango | 13 | Pendiente |
 | T-05 | Loan/LoanItem, estados y cinco días | T-04 | HU-06 a HU-08; reloj falso, duplicados y máximo dos | 13 | Pendiente |
 | T-06 | Researcher y User | T-03 | Normalización, rol válido, documento; HU-02/HU-05 | 13 | Pendiente |
