@@ -1,6 +1,6 @@
 # Modelo de datos
 
-Diseño inicial, **sin migraciones implementadas todavía**. Motor previsto: PostgreSQL 16, esquema `lab_equipment`, zona UTC. Las marcas `pendiente T-02` y `pendiente T-18` se cambiarán a `motor` únicamente al inspeccionar la base y ejecutar sus pruebas.
+Migración inicial implementada y verificada el 14 de noviembre (T-02). Motor previsto: PostgreSQL 16, esquema `lab_equipment`, zona UTC. Las marcas `pendiente T-02` y `pendiente T-18` se cambiarán a `motor` únicamente al inspeccionar la base y ejecutar sus pruebas.
 
 ## Convenciones y relaciones
 
@@ -58,25 +58,25 @@ Todas las columnas son NOT NULL salvo las indicadas con `sí`. PK significa clav
 
 | Objeto | Regla | Estado actual |
 |---|---|---|
-| Seis PK | UUID únicos | pendiente T-02 |
-| UNIQUE category.name, researcher.document_number, user.username | Evitar duplicados | pendiente T-02 |
-| uq_equipment_active_reference | UNIQUE(reference) WHERE deleted_at IS NULL | pendiente T-02 |
-| uq_loan_item_equipment | UNIQUE(loan_id, equipment_id) | pendiente T-02 |
-| ck_equipment_available_range | available_units >= 0 AND available_units <= total_units | pendiente T-02 |
+| Seis PK | UUID únicos | motor (verificado 14/11) |
+| UNIQUE category.name, researcher.document_number, user.username | Evitar duplicados | motor (verificado 14/11) |
+| uq_equipment_active_reference | UNIQUE(reference) WHERE deleted_at IS NULL | motor (verificado 14/11) |
+| uq_loan_item_equipment | UNIQUE(loan_id, equipment_id) | motor (verificado 14/11) |
+| ck_equipment_available_range | available_units >= 0 AND available_units <= total_units | motor (verificado 14/11) |
 | ck_equipment_total_positive | total_units >= 1 | pendiente T-18 |
 | ck_user_role | role IN ('admin','lab_technician') | pendiente T-18 |
-| ck_equipment_reference | Referencia normalizada conforme al contrato | pendiente T-02 |
-| ck_user_username | Nombre no vacío, normalizado | pendiente T-02 |
-| ck_equipment_cover_key | NULL o cadena no vacía | pendiente T-02 |
-| FK equipment.category_id | category.id, DELETE RESTRICT | pendiente T-02 |
-| FK loan.researcher_id | researcher.id, DELETE RESTRICT | pendiente T-02 |
-| FK loan.loaned_by_user_id | user.id, DELETE RESTRICT | pendiente T-02 |
-| FK loan_item.loan_id | loan.id, DELETE CASCADE por composición; ninguna operación borra préstamos | pendiente T-02 |
-| FK loan_item.equipment_id | equipment.id, DELETE RESTRICT | pendiente T-02 |
-| Índice equipment(category_id, name) | Parcial sobre activos | pendiente T-02 |
-| Índice loan(loaned_at), loan(researcher_id) | Listado y pendientes de investigador | pendiente T-02 |
-| Índice loan_item(equipment_id) | Referencias históricas | pendiente T-02 |
-| Índice loan_item(due_at) | Parcial WHERE returned_at IS NULL | pendiente T-02 |
+| ck_equipment_reference | Referencia normalizada conforme al contrato | motor (verificado 14/11) |
+| ck_user_username | Nombre no vacío, normalizado | motor (verificado 14/11) |
+| ck_equipment_cover_key | NULL o cadena no vacía | motor (verificado 14/11) |
+| FK equipment.category_id | category.id, DELETE RESTRICT | motor (verificado 14/11) |
+| FK loan.researcher_id | researcher.id, DELETE RESTRICT | motor (verificado 14/11) |
+| FK loan.loaned_by_user_id | user.id, DELETE RESTRICT | motor (verificado 14/11) |
+| FK loan_item.loan_id | loan.id, DELETE CASCADE por composición; ninguna operación borra préstamos | motor (verificado 14/11) |
+| FK loan_item.equipment_id | equipment.id, DELETE RESTRICT | motor (verificado 14/11) |
+| Índice equipment(category_id, name) | Parcial sobre activos | motor (verificado 14/11) |
+| Índice loan(loaned_at), loan(researcher_id), loan(loaned_by_user_id) | Listado y pendientes de investigador | motor (verificado 14/11) |
+| Índice loan_item(equipment_id) | Referencias históricas | motor (verificado 14/11) |
+| Índice loan_item(due_at) | Parcial WHERE returned_at IS NULL | motor (verificado 14/11) |
 
 Todas las FK usan ON UPDATE NO ACTION. Las reglas de máximo dos pendientes, ausencia de vencidos, una o dos líneas, fechas de vencimiento y atomicidad se implementarán en dominio/aplicación/transacciones (T-05, T-09 y T-13); un CHECK de una fila no puede contar otras filas. No se afirmará que la base ya las impone.
 
@@ -96,7 +96,7 @@ Investigadores y operadores son datos restringidos a roles autorizados; el repor
 
 ## Verificación prevista del esquema
 
-Estas consultas todavía no se han ejecutado contra una implementación:
+El esquema se inspeccionó el 14 de noviembre; estas consultas permiten repetir la inspección:
 
 ```sql
 SELECT table_name, column_name, data_type, is_nullable, column_default

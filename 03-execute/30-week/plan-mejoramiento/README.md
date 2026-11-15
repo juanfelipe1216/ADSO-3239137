@@ -6,7 +6,7 @@ Aplicación para administrar equipos, investigadores, préstamos y devoluciones 
 
 ## Estado del 14 de noviembre de 2026
 
-La base Laravel ya arranca en un contenedor y su endpoint de salud está probado (T-01). **El producto de negocio aún está pendiente:** no hay login, catálogo ni préstamos operativos. Se verificó 1 de las 23 tareas. La ruta confirmada por el usuario es `03-execute/30-week/plan-mejoramiento/`.
+La base Laravel ya arranca en un contenedor y su endpoint de salud está probado (T-01). **El producto de negocio aún está pendiente:** no hay login, catálogo ni préstamos operativos. Se verificaron 2 de las 23 tareas: arranque y migración inicial. La ruta confirmada por el usuario es `03-execute/30-week/plan-mejoramiento/`.
 
 El primer avance documental corresponde al 12 de noviembre. Los ocho días de actividad solo quedarán cumplidos al completar y registrar las sesiones reales hasta el 19; los commits de sincronización del material del curso no sustituyen los avances del proyecto.
 
@@ -44,11 +44,11 @@ La aprobación exige promedio de al menos 70 % en los siete informes, ninguno me
 
 ## Arranque
 
-Desde esta carpeta, con Docker Desktop funcionando:
+Desde esta carpeta, con Docker Desktop funcionando, copiar `.env.example` a `.env` y asignar una contraseña local aleatoria a `DB_PASSWORD`. No subir `.env`. Después:
 
 ```sh
-docker compose -f infra/compose.yaml up --build -d
-docker compose -f infra/compose.yaml exec -T api composer test
+docker compose --env-file .env -f infra/compose.yaml up --build -d
+docker compose --env-file .env -f infra/compose.yaml exec -T api composer test
 ```
 
-La salud responde en `http://127.0.0.1:8081/api/v1/health`. Este arranque solo incluye la API inicial; PostgreSQL, frontend, aprovisionamiento y sistema completo siguen pendientes de T-02/T-17/T-20. No se requieren secretos para la única ruta de salud pública actual.
+La salud responde en `http://127.0.0.1:8081/api/v1/health`. Este arranque incluye API y PostgreSQL con migración automática; frontend y admin siguen pendientes de T-17/T-20. La contraseña local de la base se recibe de `.env`.

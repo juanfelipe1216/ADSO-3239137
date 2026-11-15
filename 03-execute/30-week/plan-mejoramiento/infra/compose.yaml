@@ -1,5 +1,19 @@
 name: lab-equipment-a03
 services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: lab_equipment
+      POSTGRES_USER: lab_app
+      POSTGRES_PASSWORD: ${DB_PASSWORD:?Define DB_PASSWORD en .env}
+      TZ: UTC
+    volumes:
+      - database:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U lab_app -d lab_equipment"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
   api:
     build:
       context: ..
@@ -9,8 +23,18 @@ services:
     environment:
       APP_ENV: local
       APP_DEBUG: "false"
+      DB_HOST: db
+      DB_DATABASE: lab_equipment
+      DB_USERNAME: lab_app
+      DB_PASSWORD: ${DB_PASSWORD:?Define DB_PASSWORD en .env}
+    depends_on:
+      db:
+        condition: service_healthy
+    command: ["sh", "-c", "php artisan migrate --force && exec php artisan serve --host=0.0.0.0 --port=8000"]
     healthcheck:
       test: ["CMD", "php", "-r", "exit(file_get_contents('http://127.0.0.1:8000/api/v1/health') === '{\"status\":\"ok\"}' ? 0 : 1);"]
       interval: 10s
       timeout: 3s
       retries: 5
+volumes:
+  database:
