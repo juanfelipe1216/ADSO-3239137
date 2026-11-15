@@ -4,9 +4,9 @@ Este proyecto es la solución del plan de mejoramiento del aprendiz A03, ficha 3
 
 Aplicación para administrar equipos, investigadores, préstamos y devoluciones de un laboratorio. El producto tendrá React, una API Laravel y PostgreSQL 16. Los operadores serán administradores y laboratoristas; los investigadores no tendrán acceso al sistema.
 
-## Estado del 12 de noviembre de 2026
+## Estado del 14 de noviembre de 2026
 
-Primera versión de la especificación y de la planificación. **El producto todavía no está implementado ni probado.** Las 23 tareas permanecen pendientes. La ruta confirmada por el usuario en su fork es `03-execute/30-week/plan-mejoramiento/`.
+La base Laravel ya arranca en un contenedor y su endpoint de salud está probado (T-01). **El producto de negocio aún está pendiente:** no hay login, catálogo ni préstamos operativos. Se verificó 1 de las 23 tareas. La ruta confirmada por el usuario es `03-execute/30-week/plan-mejoramiento/`.
 
 El primer avance documental corresponde al 12 de noviembre. Los ocho días de actividad solo quedarán cumplidos al completar y registrar las sesiones reales hasta el 19; los commits de sincronización del material del curso no sustituyen los avances del proyecto.
 
@@ -44,4 +44,11 @@ La aprobación exige promedio de al menos 70 % en los siete informes, ninguno me
 
 ## Arranque
 
-Pendiente de T-01, T-17 y T-20. El comando objetivo, una vez implementado y configuradas las variables locales, será `docker compose -f infra/compose.yaml up --build -d`. Todavía no es un comando ejecutable de esta entrega. Los secretos se documentarán en `.env.example` sin valores reales.
+Desde esta carpeta, con Docker Desktop funcionando:
+
+```sh
+docker compose -f infra/compose.yaml up --build -d
+docker compose -f infra/compose.yaml exec -T api composer test
+```
+
+La salud responde en `http://127.0.0.1:8081/api/v1/health`. Este arranque solo incluye la API inicial; PostgreSQL, frontend, aprovisionamiento y sistema completo siguen pendientes de T-02/T-17/T-20. No se requieren secretos para la única ruta de salud pública actual.

@@ -1,10 +1,10 @@
 # Tareas y trazabilidad
 
-**Estado inicial: 0/23 tareas de producto verificadas.** La documentación preparada no equivale a implementación. Toda tarea permanece pendiente hasta registrar comando, resultado, fecha y commit de evidencia. Fechas objetivo en noviembre de 2026.
+**Estado al 14 de noviembre: 1/23 tareas de producto verificadas.** T-01 cuenta con [evidencia de ejecución](evidence/2026-11-14-api-bootstrap.md). Las demás tareas siguen pendientes. Las fechas objetivo originales se conservan para mostrar el desvío del cronograma.
 
 | ID | Tarea adaptada | Depende de | Requisito / evidencia de cierre | Objetivo | Estado |
 |---|---|---|---|---|---|
-| T-01 | Laravel, estructura y salud | - | `/api/v1/health` devuelve status ok; contenedor ejecutable | 13 | Pendiente |
+| T-01 | Laravel, estructura y salud | - | `/api/v1/health` devuelve status ok; contenedor ejecutable | 13 | Verificada el 14 |
 | T-02 | Migración de seis tablas y cinco categorías | T-01 | Esquema exacto, UUID, FK, UNIQUE, CHECK de stock, sin DEFAULT | 13 | Pendiente |
 | T-03 | Reference, Quantity, DocumentNumber, DateRange | T-01 | Pruebas de formato y normalización; total positivo; fin >= inicio | 13 | Pendiente |
 | T-04 | Equipment: retirar, restituir, cambiar total, baja | T-03 | HU-03/HU-04; stock siempre en rango | 13 | Pendiente |

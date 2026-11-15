@@ -4,6 +4,12 @@ Zona: **America/Bogota (UTC-5)**. Horario confirmado para desarrollo: **19:00-22
 
 Los horarios son bloques de trabajo, no fechas que se insertarán en Git. Cada commit ocurre cuando su cambio está revisado. Las ocho fechas solo se cumplen después de trabajar y registrar avances reales en cada una. No hay una automatización creada que vaya a realizar las sesiones futuras.
 
+## Ajuste confirmado el 14 de noviembre
+
+La segunda sesión se retomó el 14. El usuario confirmó que no hubo avance el 13 en otra rama o carpeta. Por tanto, trabajando todos los días restantes hasta el 19 solo se podrán registrar siete fechas distintas (12 y 14-19). El criterio de ocho días del acta queda en riesgo de incumplimiento y requiere aclaración con el instructor; este documento no lo modifica ni lo declara aprobado. Se conservan las fechas reales y el cronograma original debajo como línea base, sin atribuir trabajo al día 13.
+
+La sesión del 14 retoma el primer bloque pendiente: Laravel, salud, contenedores y luego esquema/dominio. Cada bloque se verifica, se registra en un commit y se sube antes de comenzar el siguiente. No se acumulan todos los commits para un único push al final de la sesión.
+
 ## Sesiones
 
 | Día | 19:00-19:50 | 20:00-20:50 | 21:00-21:40 | 21:40-22:00 |
