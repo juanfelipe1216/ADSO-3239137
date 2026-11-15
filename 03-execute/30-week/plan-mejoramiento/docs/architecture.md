@@ -1,6 +1,6 @@
 # Arquitectura
 
-Diseño objetivo, pendiente de implementación. Monolito modular con arquitectura hexagonal. React consume HTTP; Laravel adapta peticiones a casos de uso; PostgreSQL persiste el negocio. La página pública no consume la API.
+Diseño objetivo. Al 15 de noviembre están implementados el arranque Laravel, la migración PostgreSQL y los objetos del dominio (T-01 a T-06); aplicación, adaptadores de negocio e interfaces siguen pendientes. Monolito modular con arquitectura hexagonal. React consumirá HTTP; Laravel adaptará peticiones a casos de uso; PostgreSQL persistirá el negocio. La página pública no consumirá la API.
 
 ```mermaid
 flowchart LR
@@ -43,6 +43,8 @@ tool/                sembrador, concurrencia y carga
 Puertos previstos: `EquipmentRepository`, `ResearcherRepository`, `UserRepository`, `LoanRepository`, `ReportReader`, `TransactionManager`, `Clock`, `PasswordHasher`, `TokenIssuer`, `CoverStorage`, `IdGenerator`. Ninguna firma expone un modelo Eloquent, un Request, Builder o conexión PDO.
 
 `Equipment` garantiza existencias en rango; `Loan` controla líneas, fecha de vencimiento y devolución única; `Researcher` define nombre/documento; `User` normaliza usuario y rol. La aplicación verifica reglas que cruzan agregados, como el total pendiente y los vencidos del investigador.
+
+Los objetos del dominio implementados son inmutables: retirar, restituir, editar, dar de baja y devolver generan una nueva instancia válida. El servicio de aplicación deberá guardar explícitamente la instancia resultante dentro de la transacción. El dominio recibe instantes explícitos; no consulta el reloj del sistema ni conoce el puerto `Clock`. La normalización de usuario se comparte mediante `User::normalizeUsername`; el hash es privado y queda excluido de su representación JSON y depuración. Esto no sustituye las pruebas posteriores de seguridad HTTP y logs.
 
 Cada servicio realiza una acción: `LoginService`, `CreateLabTechnicianService`, `CreateEquipmentService`, `UpdateEquipmentService`, `SearchEquipmentService`, `RetireEquipmentService`, `UploadCoverService`, `RemoveCoverService`, `CreateResearcherService`, `LendEquipmentService`, `ReturnItemService`, `ListOverdueService`, `MostBorrowedReportService` y consultas de detalle/listado.
 

@@ -1,6 +1,6 @@
 # Contrato HTTP de lab-equipment
 
-Contrato previsto; rutas aún no implementadas. Base única `/api/v1`; las rutas de la tabla son relativas a ella. Salud significa `/api/v1/health`: no se añade un alias `/up` ni una segunda ruta pública de negocio. JSON UTF-8, nombres `snake_case`, UUID v4 y fechas ISO 8601 UTC terminadas en `Z`.
+Contrato objetivo. Al 15 de noviembre solo está implementada y comprobada la ruta de salud; las veinte operaciones restantes siguen pendientes. Base única `/api/v1`; las rutas de la tabla son relativas a ella. Salud significa `/api/v1/health`: no se añade un alias `/up` ni una segunda ruta pública de negocio. JSON UTF-8, nombres `snake_case`, UUID v4 y fechas ISO 8601 UTC terminadas en `Z`.
 
 ## Convenciones
 
