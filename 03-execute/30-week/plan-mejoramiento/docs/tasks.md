@@ -1,6 +1,6 @@
 # Tareas y trazabilidad
 
-**Estado al 15 de noviembre: 4/23 tareas de producto verificadas.** T-01 a T-04 cuentan con evidencias en `docs/evidence/`. Las demás tareas siguen pendientes. Las fechas objetivo originales se conservan para mostrar el desvío del cronograma.
+**Estado al 15 de noviembre: 5/23 tareas de producto verificadas.** T-01 a T-05 cuentan con evidencias en `docs/evidence/`. Las demás tareas siguen pendientes. Las fechas objetivo originales se conservan para mostrar el desvío del cronograma.
 
 | ID | Tarea adaptada | Depende de | Requisito / evidencia de cierre | Objetivo | Estado |
 |---|---|---|---|---|---|
@@ -8,7 +8,7 @@
 | T-02 | Migración de seis tablas y cinco categorías | T-01 | Esquema exacto, UUID, FK, UNIQUE, CHECK de stock, sin DEFAULT | 13 | Verificada el 14 |
 | T-03 | Reference, Quantity, DocumentNumber, DateRange | T-01 | Pruebas de formato y normalización; total positivo; fin >= inicio | 13 | Verificada el 14 |
 | T-04 | Equipment: retirar, restituir, cambiar total, baja | T-03 | HU-03/HU-04; stock siempre en rango | 13 | Verificada el 15 |
-| T-05 | Loan/LoanItem, estados y cinco días | T-04 | HU-06 a HU-08; reloj falso, duplicados y máximo dos | 13 | Pendiente |
+| T-05 | Loan/LoanItem, estados y cinco días | T-04 | HU-06 a HU-08; tiempo controlado, duplicados y máximo dos líneas por préstamo | 13 | Verificada el 15 |
 | T-06 | Researcher y User | T-03 | Normalización, rol válido, documento; HU-02/HU-05 | 13 | Pendiente |
 | T-07 | Autenticación y creación de laboratorista con fakes | T-06 | HU-01/HU-02; 401/403/409/422 y no exponer contraseña | 14 | Pendiente |
 | T-08 | Casos de catálogo, fotografía e investigadores con fakes | T-04/T-06 | HU-03/HU-04/HU-05; filtros, paginación, bajas y duplicados | 14 | Pendiente |
