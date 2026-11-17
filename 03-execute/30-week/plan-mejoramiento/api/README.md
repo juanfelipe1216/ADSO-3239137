@@ -1,13 +1,13 @@
 # API Laravel
 
-Estado del 15 de noviembre: Laravel arranca, la migración inicial está verificada y existen objetos de valor y dominio de equipos, préstamos, investigadores y usuarios (T-01 a T-06). `composer.json`, `composer.lock`, `artisan` y `tests` están directamente en esta carpeta. Las operaciones de negocio por HTTP siguen pendientes.
+Estado del 16 de noviembre: Laravel arranca, la migración inicial está verificada y existen objetos de valor y dominio de equipos, préstamos, investigadores y usuarios (T-01 a T-06). `composer.json`, `composer.lock`, `artisan` y `tests` están directamente en esta carpeta. Las operaciones de negocio por HTTP siguen pendientes.
 
 Responsabilidades: las 21 operaciones de [contrato](../docs/api-contract.md), reglas del laboratorio, seguridad, transacciones y adaptadores. [Arquitectura](../docs/architecture.md) define las dependencias; [tareas](../docs/tasks.md) T-01 a T-19 definen su evidencia.
 
 No conservar migraciones de ejemplo para usuarios con email, caché, colas, sesiones o reset de contraseñas. Las seis tablas del negocio se crean exclusivamente por migración en `lab_equipment`; la contabilidad de migraciones Laravel queda fuera. El admin se aprovisiona con valores de entorno, nunca con un password publicado.
 
-La primera parte de T-07 implementa `LoginService` con los puertos `UserRepository`, `PasswordHasher` y `TokenIssuer`. Se comprueba con fakes, sin Laravel ni base de datos en esas pruebas. La creación de laboratoristas, los adaptadores reales y la conexión HTTP siguen pendientes: no hay aún login operativo en la API.
+T-07 implementa `LoginService` y `CreateLabTechnicianService` con puertos propios y fakes reutilizables. Se verifica autorización admin, rol de alta limitado a laboratorista, normalización, contraseña de 12-128 caracteres y duplicados, sin Laravel ni base de datos en esas pruebas. Los adaptadores reales y la conexión HTTP siguen pendientes: no hay aún login operativo en la API.
 
-Desde la raíz del proyecto: `docker compose --env-file .env -f infra/compose.yaml up --build -d` y `docker compose --env-file .env -f infra/compose.yaml exec -T api composer test`. El segundo comando ejecuta actualmente 83 casos y 217 aserciones, en doce archivos de pruebas; no equivale a los quince archivos exigidos ni al contrato completo.
+Desde la raíz del proyecto: `docker compose --env-file .env -f infra/compose.yaml up --build -d` y `docker compose --env-file .env -f infra/compose.yaml exec -T api composer test`. El segundo comando ejecuta actualmente 99 casos y 284 aserciones, en trece archivos de pruebas; no equivale a los quince archivos exigidos ni al contrato completo.
 
 Antes de considerar lista esta carpeta: esquema inspeccionado, al menos 15 archivos de pruebas significativas, contrato completo, concurrencia real y respuestas sin secretos.

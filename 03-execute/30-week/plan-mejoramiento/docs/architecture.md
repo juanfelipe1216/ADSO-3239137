@@ -1,6 +1,6 @@
 # Arquitectura
 
-Diseño objetivo. Al 15 de noviembre están implementados el arranque Laravel, la migración PostgreSQL y los objetos del dominio (T-01 a T-06); aplicación, adaptadores de negocio e interfaces siguen pendientes. Monolito modular con arquitectura hexagonal. React consumirá HTTP; Laravel adaptará peticiones a casos de uso; PostgreSQL persistirá el negocio. La página pública no consumirá la API.
+Diseño objetivo. Al 16 de noviembre están implementados el arranque Laravel, la migración PostgreSQL, los objetos del dominio y los casos de login/creación de laboratoristas con fakes (T-01 a T-07). Los demás servicios, adaptadores de negocio e interfaces siguen pendientes. Monolito modular con arquitectura hexagonal. React consumirá HTTP; Laravel adaptará peticiones a casos de uso; PostgreSQL persistirá el negocio. La página pública no consumirá la API.
 
 ```mermaid
 flowchart LR

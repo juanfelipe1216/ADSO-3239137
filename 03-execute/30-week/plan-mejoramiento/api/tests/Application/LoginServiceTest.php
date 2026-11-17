@@ -4,44 +4,26 @@ declare(strict_types=1);
 
 namespace Tests\Application;
 
-use Lab\Application\Ports\PasswordHasher;
+use Tests\Fakes\FakePasswordHasher;
 use Lab\Application\Ports\TokenIssuer;
-use Lab\Application\Ports\UserRepository;
+use Tests\Fakes\InMemoryUserRepository;
 use Lab\Application\Services\LoginService;
 use Lab\Domain\DomainViolation;
 use Lab\Domain\User;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
-use SensitiveParameter;
 
 final class LoginServiceTest extends TestCase
 {
-    private UserRepository $users;
-    private PasswordHasher $passwords;
+    private InMemoryUserRepository $users;
+    private FakePasswordHasher $passwords;
     private TokenIssuer $tokens;
     private LoginService $service;
 
     protected function setUp(): void
     {
-        $this->users = new class implements UserRepository {
-            public ?User $user = null;
-            public array $lookups = [];
-
-            public function findByUsername(string $username): ?User
-            {
-                $this->lookups[] = $username;
-                return $this->user?->username === $username ? $this->user : null;
-            }
-        };
-        $this->passwords = new class implements PasswordHasher {
-            public array $checks = [];
-
-            public function verify(#[SensitiveParameter] string $password, #[SensitiveParameter] ?string $hash): bool
-            {
-                $this->checks[] = [$password, $hash];
-                return $hash === 'fixture-hash' && $password === '  clave de prueba  ';
-            }
-        };
+        $this->users = new InMemoryUserRepository();
+        $this->passwords = new FakePasswordHasher(['fixture-hash' => '  clave de prueba  ']);
         $this->tokens = new class implements TokenIssuer {
             public array $issued = [];
 
@@ -57,7 +39,7 @@ final class LoginServiceTest extends TestCase
     #[DataProvider('roles')]
     public function test_login_normalizes_username_and_requests_an_eight_hour_token(string $role): void
     {
-        $this->users->user = new User('user-1', 'ángela.lab', 'fixture-hash', $role);
+        $this->users->add(new User('user-1', 'ángela.lab', 'fixture-hash', $role));
         $result = $this->service->execute('  ÁNGELA.LAB  ', '  clave de prueba  ');
 
         self::assertSame(['ángela.lab'], $this->users->lookups);
@@ -72,7 +54,7 @@ final class LoginServiceTest extends TestCase
 
     public function test_unknown_user_and_wrong_password_have_the_same_error(): void
     {
-        $this->users->user = new User('user-1', 'operator', 'fixture-hash', 'lab_technician');
+        $this->users->add(new User('user-1', 'operator', 'fixture-hash', 'lab_technician'));
         $errors = [];
         foreach (['operator', 'unknown'] as $username) {
             try {
@@ -91,7 +73,7 @@ final class LoginServiceTest extends TestCase
 
     public function test_password_is_not_trimmed_to_make_it_match(): void
     {
-        $this->users->user = new User('user-1', 'operator', 'fixture-hash', 'lab_technician');
+        $this->users->add(new User('user-1', 'operator', 'fixture-hash', 'lab_technician'));
         try {
             $this->service->execute('operator', 'clave de prueba');
             self::fail('Se transformó la contraseña.');

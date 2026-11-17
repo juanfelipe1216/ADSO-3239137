@@ -4,9 +4,9 @@ Este proyecto es la solución del plan de mejoramiento del aprendiz A03, ficha 3
 
 Aplicación para administrar equipos, investigadores, préstamos y devoluciones de un laboratorio. El producto tendrá React, una API Laravel y PostgreSQL 16. Los operadores serán administradores y laboratoristas; los investigadores no tendrán acceso al sistema.
 
-## Estado del 15 de noviembre de 2026
+## Estado del 16 de noviembre de 2026
 
-La base Laravel y PostgreSQL arrancan en contenedores. **El producto de negocio aún está pendiente:** no hay login, catálogo ni préstamos operativos por HTTP. Se verificaron 6 de las 23 tareas: arranque, migración inicial, objetos de valor y dominio de equipos, préstamos, investigadores y usuarios. La ruta confirmada por el usuario es `03-execute/30-week/plan-mejoramiento/`.
+La base Laravel y PostgreSQL arrancan en contenedores. **El producto de negocio aún está pendiente:** no hay login, catálogo ni préstamos operativos por HTTP. Se verificaron 7 de las 23 tareas: arranque, migración inicial, objetos de valor, dominio y casos de login/creación de laboratoristas con fakes. La ruta confirmada por el usuario es `03-execute/30-week/plan-mejoramiento/`.
 
 El primer avance documental corresponde al 12 de noviembre. El usuario confirmó que el 13 no hubo avances: entre el 12 y el 19 quedan como máximo siete fechas reales de actividad. El requisito de ocho días queda pendiente de aclaración con la instructora; no se alterarán fechas ni se usarán commits de sincronización del curso para aparentar avances.
 
