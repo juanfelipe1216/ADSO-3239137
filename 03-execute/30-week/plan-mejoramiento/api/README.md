@@ -8,8 +8,8 @@ No conservar migraciones de ejemplo para usuarios con email, caché, colas, sesi
 
 T-07 implementa `LoginService` y `CreateLabTechnicianService` con puertos propios y fakes reutilizables. Se verifica autorización admin, rol de alta limitado a laboratorista, normalización, contraseña de 12-128 caracteres y duplicados, sin Laravel ni base de datos en esas pruebas. Los adaptadores reales y la conexión HTTP siguen pendientes: no hay aún login operativo en la API.
 
-Desde la raíz del proyecto: `docker compose --env-file .env -f infra/compose.yaml up --build -d` y `docker compose --env-file .env -f infra/compose.yaml exec -T api composer test`. El segundo comando ejecuta actualmente 122 casos y 347 aserciones, en dieciséis archivos de pruebas; el mínimo numérico se alcanza, pero el contrato completo y la integración siguen pendientes.
+Desde la raíz del proyecto: `docker compose --env-file .env -f infra/compose.yaml up --build -d` y `docker compose --env-file .env -f infra/compose.yaml exec -T api composer test`. El segundo comando ejecuta actualmente 141 casos y 398 aserciones, en dieciocho archivos de pruebas; el mínimo numérico se alcanza, pero el contrato completo y la integración siguen pendientes.
 
-T-08 incorpora el alta de investigadores con documento único, validaciones sin efectos parciales y pruebas con fakes. También están probadas las consultas de investigadores con filtros, paginación y conteo de líneas pendientes. Siguen pendientes el catálogo, las fotografías y los adaptadores reales.
+T-08 incorpora el alta de investigadores con documento único, validaciones sin efectos parciales y pruebas con fakes. También están probadas las consultas de investigadores con filtros, paginación y conteo de líneas pendientes. También se verificaron los servicios de catálogo con roles, búsquedas, stock y versión interna. Siguen pendientes las fotografías y los adaptadores reales.
 
 Antes de considerar lista esta carpeta: esquema inspeccionado, al menos 15 archivos de pruebas significativas, contrato completo, concurrencia real y respuestas sin secretos.

@@ -125,7 +125,7 @@ Vencidos devuelve `{"items": [...]}` con `loan_id`, `item_id`, `equipment_name`,
 | REFERENCE_TAKEN | 409 | Referencia activa repetida |
 | DOCUMENT_TAKEN | 409 | Documento repetido |
 | EQUIPMENT_HAS_OPEN_LOANS | 409 | Baja con pendientes |
-| EQUIPMENT_NOT_AVAILABLE | 409 | Stock agotado o conflicto de versión al prestar |
+| EQUIPMENT_NOT_AVAILABLE | 409 | Stock agotado o conflicto de versión al prestar, editar o dar de baja |
 | RESEARCHER_HAS_OVERDUE | 409 | Investigador con vencidos |
 | ITEM_ALREADY_RETURNED | 409 | Segunda devolución |
 | RESEARCHER_LIMIT_EXCEEDED | 422 | Se excederían dos pendientes |

@@ -13,7 +13,7 @@ Los doce bloques del 17 **no caben en el horario original de 19:00 a 22:00**. Es
 | Bloque | Fecha objetivo | Alcance | Prueba para poder subirlo | Estado |
 |---|---|---|---|---|
 | B01 | 16 | T-08: búsqueda/detalle de investigadores | Filtros, páginas vacías con total, tamaño 1-50, conteo de líneas | Verificado en esta sesión |
-| B02 | 16 | T-08: crear/editar/bajar/consultar equipos y categorías | Roles, referencia única/inmutable, stock, filtros y bajas con fakes | Pendiente |
+| B02 | 16 | T-08: crear/editar/bajar/consultar equipos y categorías | Roles, referencia única/inmutable, stock, filtros y bajas con fakes | Verificado en esta sesión |
 | B03 | 16 | T-18: CHECK de total positivo y rol | PostgreSQL rechaza SQL inválido; esquema documentado | Pendiente |
 | B04 | 16 | T-14: Argon2id y JWT real | Hash verificado; firma, expiración, algoritmo y rol rechazados si inválidos | Pendiente |
 | B05 | 17, primer tramo | T-08/T-15: fotografía y cierre de servicios de catálogo | JPG/PNG por contenido, 2 MiB, clave opaca y limpieza segura | Pendiente |
