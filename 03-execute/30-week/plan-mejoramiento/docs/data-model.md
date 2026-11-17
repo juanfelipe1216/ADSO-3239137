@@ -1,6 +1,6 @@
 # Modelo de datos
 
-Migración inicial implementada y verificada el 14 de noviembre (T-02). Motor previsto: PostgreSQL 16, esquema `lab_equipment`, zona UTC. Las marcas `pendiente T-02` y `pendiente T-18` se cambiarán a `motor` únicamente al inspeccionar la base y ejecutar sus pruebas.
+Migración inicial implementada y verificada el 14 de noviembre (T-02). Motor previsto: PostgreSQL 16, esquema `lab_equipment`, zona UTC. Los CHECK adicionales de T-18 se aplicaron y verificaron en PostgreSQL el 16 de noviembre.
 
 ## Convenciones y relaciones
 
@@ -63,8 +63,8 @@ Todas las columnas son NOT NULL salvo las indicadas con `sí`. PK significa clav
 | uq_equipment_active_reference | UNIQUE(reference) WHERE deleted_at IS NULL | motor (verificado 14/11) |
 | uq_loan_item_equipment | UNIQUE(loan_id, equipment_id) | motor (verificado 14/11) |
 | ck_equipment_available_range | available_units >= 0 AND available_units <= total_units | motor (verificado 14/11) |
-| ck_equipment_total_positive | total_units >= 1 | pendiente T-18 |
-| ck_user_role | role IN ('admin','lab_technician') | pendiente T-18 |
+| ck_equipment_total_positive | total_units >= 1 | motor (verificado 16/11) |
+| ck_user_role | role IN ('admin','lab_technician') | motor (verificado 16/11) |
 | ck_equipment_reference | Referencia normalizada conforme al contrato | motor (verificado 14/11) |
 | ck_user_username | Nombre no vacío, normalizado | motor (verificado 14/11) |
 | ck_equipment_cover_key | NULL o cadena no vacía | motor (verificado 14/11) |

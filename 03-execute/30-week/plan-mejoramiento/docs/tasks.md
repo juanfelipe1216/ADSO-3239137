@@ -1,6 +1,6 @@
 # Tareas y trazabilidad
 
-**Estado al 16 de noviembre: 7/23 tareas de producto verificadas.** T-01 a T-07 cuentan con evidencias en `docs/evidence/`. T-07 verifica los casos de uso con fakes; HTTP y adaptadores reales siguen pendientes de T-12/T-14/T-16. T-08 tiene verificadas las operaciones de investigadores y catálogo con fakes; fotografías siguen pendientes. Las fechas objetivo originales se conservan para mostrar el desvío del cronograma.
+**Estado al 16 de noviembre: 8/23 tareas de producto verificadas.** T-01 a T-07 y T-18 cuentan con evidencias en `docs/evidence/`. T-07 verifica los casos de uso con fakes; HTTP y adaptadores reales siguen pendientes de T-12/T-14/T-16. T-08 tiene verificadas las operaciones de investigadores y catálogo con fakes; fotografías siguen pendientes. Las fechas objetivo originales se conservan para mostrar el desvío del cronograma.
 
 | ID | Tarea adaptada | Depende de | Requisito / evidencia de cierre | Objetivo | Estado |
 |---|---|---|---|---|---|
@@ -21,7 +21,7 @@
 | T-15 | Almacenamiento de fotos | T-08 | 2 MiB válido, exceso/tipo falso 422, descarga autorizada y clave null | 14 | Pendiente |
 | T-16 | Las 21 operaciones HTTP y error uniforme | T-10/T-11/T-14/T-15 | RNF-4: matriz de rutas, roles, entradas y códigos | 16 | Pendiente |
 | T-17 | Composición y admin desde entorno | T-16 | Arranque desde DB vacía, admin inicia sesión, reinicio idempotente | 16 | Pendiente |
-| T-18 | CHECK de total positivo y rol en motor | T-12 | SQL inválido rechazado; modelo actualizado tras comprobarlo | 16 | Pendiente |
+| T-18 | CHECK de total positivo y rol en motor | T-02 | SQL inválido rechazado; modelo actualizado tras comprobarlo | 16 | Verificada el 16 en PostgreSQL |
 | T-19 | Pruebas de dependencia y composición | T-17 | Artículos I-III; prueba falla al introducir dependencia prohibida | 16 | Pendiente |
 | T-20 | Compose con db, api y app | T-17 | RNF-5: un comando tras configurar entorno; DDL solo en API | 16 | Pendiente |
 | T-21 | Sembrador HTTP | T-17 | >=40 equipos, >=10 investigadores, >=15 préstamos, exactamente 3 líneas vencidas; restauración de reloj | 16 | Pendiente |
