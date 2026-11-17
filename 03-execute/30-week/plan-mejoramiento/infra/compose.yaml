@@ -23,6 +23,7 @@ services:
     environment:
       APP_ENV: local
       APP_DEBUG: "false"
+      JWT_SECRET: ${JWT_SECRET:-}
       DB_HOST: db
       DB_DATABASE: lab_equipment
       DB_USERNAME: lab_app

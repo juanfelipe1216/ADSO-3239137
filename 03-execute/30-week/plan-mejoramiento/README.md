@@ -6,7 +6,7 @@ Aplicación para administrar equipos, investigadores, préstamos y devoluciones 
 
 ## Estado del 16 de noviembre de 2026
 
-La base Laravel y PostgreSQL arrancan en contenedores. **El producto de negocio aún está pendiente:** no hay login, catálogo ni préstamos operativos por HTTP. Se verificaron 8 de las 23 tareas: T-01 a T-07 y T-18. Las consultas de investigadores y los servicios de catálogo están probados con fakes; T-08 sigue parcial por fotografías. La ruta confirmada por el usuario es `03-execute/30-week/plan-mejoramiento/`.
+La base Laravel y PostgreSQL arrancan en contenedores. **El producto de negocio aún está pendiente:** no hay login, catálogo ni préstamos operativos por HTTP. Se verificaron 9 de las 23 tareas: T-01 a T-07, T-14 y T-18. Las consultas de investigadores y los servicios de catálogo están probados con fakes; T-08 sigue parcial por fotografías. La ruta confirmada por el usuario es `03-execute/30-week/plan-mejoramiento/`.
 
 El primer avance documental corresponde al 12 de noviembre. El usuario confirmó que el 13 no hubo avances: entre el 12 y el 19 quedan como máximo siete fechas reales de actividad. El requisito de ocho días queda pendiente de aclaración con la instructora; no se alterarán fechas ni se usarán commits de sincronización del curso para aparentar avances.
 

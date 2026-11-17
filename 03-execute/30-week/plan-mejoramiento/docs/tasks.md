@@ -1,6 +1,6 @@
 # Tareas y trazabilidad
 
-**Estado al 16 de noviembre: 8/23 tareas de producto verificadas.** T-01 a T-07 y T-18 cuentan con evidencias en `docs/evidence/`. T-07 verifica los casos de uso con fakes; HTTP y adaptadores reales siguen pendientes de T-12/T-14/T-16. T-08 tiene verificadas las operaciones de investigadores y catálogo con fakes; fotografías siguen pendientes. Las fechas objetivo originales se conservan para mostrar el desvío del cronograma.
+**Estado al 16 de noviembre: 9/23 tareas de producto verificadas.** T-01 a T-07, T-14 y T-18 cuentan con evidencias en `docs/evidence/`. T-07 verifica los casos de uso con fakes; HTTP y persistencia siguen pendientes de T-12/T-16; hash y JWT reales están verificados en T-14. T-08 tiene verificadas las operaciones de investigadores y catálogo con fakes; fotografías siguen pendientes. Las fechas objetivo originales se conservan para mostrar el desvío del cronograma.
 
 | ID | Tarea adaptada | Depende de | Requisito / evidencia de cierre | Objetivo | Estado |
 |---|---|---|---|---|---|
@@ -17,7 +17,7 @@
 | T-11 | Reporte agregado y puerto de lectura | T-09 | HU-10, ADR-004; snapshots permanecen tras renombrar | 16 | Pendiente |
 | T-12 | Repositorios de equipo, investigador y usuario | T-02/T-08 | PostgreSQL real; mismos contratos que los fakes | 14 | Pendiente |
 | T-13 | Repositorio de préstamos, versión y transacción | T-12/T-09 | RNF-2: peticiones concurrentes 201/409; máximo por investigador | 15 | Pendiente |
-| T-14 | Hash Argon2id y JWT firmado | T-07 | RNF-3: expiración, firma, rol, logs/respuestas sin secretos | 14 | Pendiente |
+| T-14 | Hash Argon2id y JWT firmado | T-07 | RNF-3: expiración, firma, rol, logs/respuestas sin secretos | 14 | Adaptadores verificados el 16; RNF-3 HTTP/logs/TLS pendiente |
 | T-15 | Almacenamiento de fotos | T-08 | 2 MiB válido, exceso/tipo falso 422, descarga autorizada y clave null | 14 | Pendiente |
 | T-16 | Las 21 operaciones HTTP y error uniforme | T-10/T-11/T-14/T-15 | RNF-4: matriz de rutas, roles, entradas y códigos | 16 | Pendiente |
 | T-17 | Composición y admin desde entorno | T-16 | Arranque desde DB vacía, admin inicia sesión, reinicio idempotente | 16 | Pendiente |

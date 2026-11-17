@@ -1,6 +1,6 @@
 # Arquitectura
 
-Diseño objetivo. Al 16 de noviembre están implementados el arranque Laravel, la migración PostgreSQL, los objetos del dominio y los casos de login/creación de laboratoristas con fakes (T-01 a T-07). También está implementado el alta de investigadores con fakes, como parte de T-08. Los demás servicios, adaptadores de negocio e interfaces siguen pendientes. Monolito modular con arquitectura hexagonal. React consumirá HTTP; Laravel adaptará peticiones a casos de uso; PostgreSQL persistirá el negocio. La página pública no consumirá la API.
+Diseño objetivo. Al 16 de noviembre están implementados el arranque Laravel, la migración PostgreSQL, los objetos del dominio y los casos de login/creación de laboratoristas con fakes (T-01 a T-07). También está implementado el alta de investigadores con fakes, como parte de T-08. También están verificados los servicios de catálogo con fakes y los adaptadores reales de hash/JWT, compuestos únicamente en LabServiceProvider. Persistencia, demás servicios e interfaces siguen pendientes. Monolito modular con arquitectura hexagonal. React consumirá HTTP; Laravel adaptará peticiones a casos de uso; PostgreSQL persistirá el negocio. La página pública no consumirá la API.
 
 ```mermaid
 flowchart LR
