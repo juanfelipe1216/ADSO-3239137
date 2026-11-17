@@ -1,6 +1,6 @@
 # Arquitectura
 
-Diseño objetivo. Al 16 de noviembre están implementados el arranque Laravel, la migración PostgreSQL, los objetos del dominio y los casos de login/creación de laboratoristas con fakes (T-01 a T-07). También está implementado el alta de investigadores con fakes, como parte de T-08. También están verificados los servicios de catálogo con fakes y los adaptadores reales de hash/JWT, compuestos únicamente en LabServiceProvider. Persistencia, demás servicios e interfaces siguen pendientes. Monolito modular con arquitectura hexagonal. React consumirá HTTP; Laravel adaptará peticiones a casos de uso; PostgreSQL persistirá el negocio. La página pública no consumirá la API.
+Diseño objetivo. Al 17 de noviembre están implementados el arranque Laravel, la migración PostgreSQL, los objetos del dominio y los casos de login/creación de laboratoristas con fakes (T-01 a T-07). T-08 verifica servicios de investigadores, catálogo y fotografías con fakes. También están verificados los adaptadores reales de hash/JWT, almacenamiento local y repositorios/lectores PostgreSQL de T-12, compuestos únicamente en LabServiceProvider. Persistencia de préstamos, demás servicios e interfaces siguen pendientes. Monolito modular con arquitectura hexagonal. React consumirá HTTP; Laravel adaptará peticiones a casos de uso; PostgreSQL persistirá el negocio. La página pública no consumirá la API.
 
 ```mermaid
 flowchart LR
@@ -49,6 +49,10 @@ Los objetos del dominio implementados son inmutables: retirar, restituir, editar
 Cada servicio realiza una acción: `LoginService`, `CreateLabTechnicianService`, `CreateEquipmentService`, `UpdateEquipmentService`, `SearchEquipmentService`, `RetireEquipmentService`, `UploadCoverService`, `RemoveCoverService`, `CreateResearcherService`, `LendEquipmentService`, `ReturnItemService`, `ListOverdueService`, `MostBorrowedReportService` y consultas de detalle/listado.
 
 ## Flujo de préstamo y concurrencia
+
+T-12 verifica escrituras de catálogo condicionadas por `xmin`, id, referencia inmutable y estado activo. `xmin` identifica la transacción que escribió la fila; no es un contador por sentencia dentro de una misma transacción. La prueba de versión usa escrituras confirmadas por separado. No se reutilizará un testigo antiguo para sucesivas modificaciones del mismo equipo dentro de una transacción. Las carreras reales y su traducción HTTP siguen pendientes de T-13/T-16.
+
+Los lectores de T-12 calculan total y página en una sola sentencia para compartir la misma instantánea. Ordenan por nombre con collation `C` e id para desempatar, conservan el total en páginas vacías y escapan `%`, `_` y `!` en búsquedas literales. Las entradas son parámetros SQL; las únicas piezas SQL compuestas proceden de constantes internas de los adaptadores.
 
 1. HTTP autentica, autoriza y valida estructura.
 2. La aplicación abre una transacción y serializa operaciones del mismo investigador mediante un bloqueo transaccional asesor.

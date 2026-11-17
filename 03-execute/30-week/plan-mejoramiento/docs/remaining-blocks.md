@@ -17,7 +17,7 @@ Los doce bloques del 17 **no caben en el horario original de 19:00 a 22:00**. Es
 | B03 | 16 | T-18: CHECK de total positivo y rol | PostgreSQL rechaza SQL inválido; esquema documentado | Verificado en esta sesión |
 | B04 | 16 | T-14: Argon2id y JWT real | Hash verificado; firma, expiración, algoritmo y rol rechazados si inválidos | Verificado en esta sesión |
 | B05 | 17, primer tramo | T-08/T-15: fotografía y cierre de servicios de catálogo | JPG/PNG por contenido, 2 MiB, clave opaca y limpieza segura | Servicios y disco verificados el 17; HTTP pendiente |
-| B06 | 17, primer tramo | T-12: repositorios y lectores PostgreSQL | Contratos compartidos con fakes, duplicados, filtros, paginación y total | Pendiente |
+| B06 | 17, primer tramo | T-12: repositorios y lectores PostgreSQL | Contratos compartidos con fakes, duplicados, filtros, paginación y total | Verificado el 17; dos avances probados y publicados por separado |
 | B07 | 17, primer tramo | T-09: prestar equipos | Límite acumulado, vencidos, duplicados, stock y rollback con fakes | Pendiente |
 | B08 | 17, primer tramo | T-10: devolver y consultar vencidos | Devolución única, stock, fechas UTC y días completos | Pendiente |
 | B09 | 17, segundo tramo | T-11: reporte congelado | Renombrar catálogo no altera agrupación histórica; sin identidades | Pendiente |

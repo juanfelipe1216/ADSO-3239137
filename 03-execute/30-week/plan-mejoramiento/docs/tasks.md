@@ -1,6 +1,6 @@
 # Tareas y trazabilidad
 
-**Estado al 17 de noviembre: 10/23 tareas de producto verificadas.** T-01 a T-08, T-14 y T-18 cuentan con evidencias en `docs/evidence/`. T-07 verifica los casos de uso con fakes; HTTP y persistencia siguen pendientes de T-12/T-16; hash y JWT reales están verificados en T-14. T-08 incluye fotografías con fakes. T-15 tiene almacenamiento local verificado; integración HTTP pendiente. Las fechas objetivo originales se conservan para mostrar el desvío del cronograma.
+**Estado al 17 de noviembre: 11/23 tareas de producto verificadas.** T-01 a T-08, T-12, T-14 y T-18 cuentan con evidencias en `docs/evidence/`. T-07 verifica los casos de uso con fakes; sus repositorios PostgreSQL están verificados en T-12 y HTTP sigue pendiente de T-16; hash y JWT reales están verificados en T-14. T-08 incluye fotografías con fakes. T-15 tiene almacenamiento local verificado; integración HTTP pendiente. Las fechas objetivo originales se conservan para mostrar el desvío del cronograma.
 
 | ID | Tarea adaptada | Depende de | Requisito / evidencia de cierre | Objetivo | Estado |
 |---|---|---|---|---|---|
@@ -15,7 +15,7 @@
 | T-09 | LendEquipmentService con fakes | T-05/T-08 | HU-06 completa: límite, vencidos, stock y atomicidad | 15 | Pendiente |
 | T-10 | Devolución y consulta de vencidos | T-09 | HU-07/HU-09; devolución duplicada sin segundo incremento | 15 | Pendiente |
 | T-11 | Reporte agregado y puerto de lectura | T-09 | HU-10, ADR-004; snapshots permanecen tras renombrar | 16 | Pendiente |
-| T-12 | Repositorios de equipo, investigador y usuario | T-02/T-08 | PostgreSQL real; mismos contratos que los fakes | 14 | Pendiente |
+| T-12 | Repositorios de equipo, investigador y usuario | T-02/T-08 | PostgreSQL real; mismos contratos que los fakes | 14 | Verificada el 17: repositorios, lectores y contratos compartidos |
 | T-13 | Repositorio de préstamos, versión y transacción | T-12/T-09 | RNF-2: peticiones concurrentes 201/409; máximo por investigador | 15 | Pendiente |
 | T-14 | Hash Argon2id y JWT firmado | T-07 | RNF-3: expiración, firma, rol, logs/respuestas sin secretos | 14 | Adaptadores verificados el 16; RNF-3 HTTP/logs/TLS pendiente |
 | T-15 | Almacenamiento de fotos | T-08 | 2 MiB válido, exceso/tipo falso 422, descarga autorizada y clave null | 14 | Parcial el 17: disco y validación probados; descarga HTTP autenticada pendiente |

@@ -16,6 +16,13 @@ use Lab\Adapters\Persistence\PostgresUserRepository;
 use Lab\Adapters\Persistence\PostgresResearcherRepository;
 use Lab\Application\Ports\UserRepository;
 use Lab\Application\Ports\ResearcherRepository;
+use Lab\Adapters\Persistence\PostgresResearcherReader;
+use Lab\Adapters\Persistence\PostgresEquipmentRepository;
+use Lab\Adapters\Persistence\PostgresCategories;
+use Lab\Application\Ports\ResearcherReader;
+use Lab\Application\Ports\EquipmentRepository;
+use Lab\Application\Ports\EquipmentReader;
+use Lab\Application\Ports\CategoryReader;
 
 final class LabServiceProvider extends ServiceProvider
 {
@@ -23,6 +30,11 @@ final class LabServiceProvider extends ServiceProvider
     {
         $this->app->singleton(UserRepository::class, fn ($app) => new PostgresUserRepository($app['db']->connection()));
         $this->app->singleton(ResearcherRepository::class, fn ($app) => new PostgresResearcherRepository($app['db']->connection()));
+        $this->app->singleton(ResearcherReader::class, fn ($app) => new PostgresResearcherReader($app['db']->connection()));
+        $this->app->singleton(PostgresEquipmentRepository::class, fn ($app) => new PostgresEquipmentRepository($app['db']->connection()));
+        $this->app->alias(PostgresEquipmentRepository::class, EquipmentRepository::class);
+        $this->app->alias(PostgresEquipmentRepository::class, EquipmentReader::class);
+        $this->app->singleton(CategoryReader::class, fn ($app) => new PostgresCategories($app['db']->connection()));
         $this->app->singleton(Clock::class, SystemClock::class);
         $this->app->singleton(PasswordHasher::class, ArgonPasswordHasher::class);
         $this->app->singleton(CoverStorage::class, fn () => new LocalCoverStorage((string) config('lab.covers_dir')));
