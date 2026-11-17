@@ -12,11 +12,17 @@ use Lab\Application\Ports\TokenIssuer;
 use Lab\Application\Ports\TokenVerifier;
 use Lab\Application\Ports\CoverStorage;
 use Lab\Adapters\Storage\LocalCoverStorage;
+use Lab\Adapters\Persistence\PostgresUserRepository;
+use Lab\Adapters\Persistence\PostgresResearcherRepository;
+use Lab\Application\Ports\UserRepository;
+use Lab\Application\Ports\ResearcherRepository;
 
 final class LabServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
+        $this->app->singleton(UserRepository::class, fn ($app) => new PostgresUserRepository($app['db']->connection()));
+        $this->app->singleton(ResearcherRepository::class, fn ($app) => new PostgresResearcherRepository($app['db']->connection()));
         $this->app->singleton(Clock::class, SystemClock::class);
         $this->app->singleton(PasswordHasher::class, ArgonPasswordHasher::class);
         $this->app->singleton(CoverStorage::class, fn () => new LocalCoverStorage((string) config('lab.covers_dir')));
