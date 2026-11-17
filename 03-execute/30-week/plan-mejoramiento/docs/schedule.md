@@ -12,6 +12,8 @@ La sesión del 14 retoma el primer bloque pendiente: Laravel, salud, contenedore
 
 ## Sesiones
 
+La línea base siguiente se conserva como historial de planificación. La ejecución pendiente se reorganizó el 16 en [18 bloques hasta el 18](remaining-blocks.md): cuatro en la sesión adicional del 16, doce de producto el 17 y dos de revisión el 18. Ese trabajo no cabe en las tres horas originales del 17; el objetivo de terminar ese día depende de ampliar el tiempo efectivo y verificar todos los bloques.
+
 | Día | 19:00-19:50 | 20:00-20:50 | 21:00-21:40 | 21:40-22:00 |
 |---|---|---|---|---|
 | Jue. 12 | Acta, informe A03, actualización del fork | Especificación, modelo, contrato y ADR | Tareas, pruebas y cronograma; revisión documental | Commits de los documentos revisados y push del primer día |

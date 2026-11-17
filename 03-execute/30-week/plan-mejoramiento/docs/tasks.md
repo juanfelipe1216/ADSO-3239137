@@ -1,6 +1,6 @@
 # Tareas y trazabilidad
 
-**Estado al 16 de noviembre: 7/23 tareas de producto verificadas.** T-01 a T-07 cuentan con evidencias en `docs/evidence/`. T-07 verifica los casos de uso con fakes; HTTP y adaptadores reales siguen pendientes de T-12/T-14/T-16. T-08 tiene verificada el alta de investigadores con fakes y permanece parcial. Las fechas objetivo originales se conservan para mostrar el desvío del cronograma.
+**Estado al 16 de noviembre: 7/23 tareas de producto verificadas.** T-01 a T-07 cuentan con evidencias en `docs/evidence/`. T-07 verifica los casos de uso con fakes; HTTP y adaptadores reales siguen pendientes de T-12/T-14/T-16. T-08 tiene verificadas el alta y las consultas de investigadores con fakes y permanece parcial. Las fechas objetivo originales se conservan para mostrar el desvío del cronograma.
 
 | ID | Tarea adaptada | Depende de | Requisito / evidencia de cierre | Objetivo | Estado |
 |---|---|---|---|---|---|
@@ -11,7 +11,7 @@
 | T-05 | Loan/LoanItem, estados y cinco días | T-04 | HU-06 a HU-08; tiempo controlado, duplicados y máximo dos líneas por préstamo | 13 | Verificada el 15 |
 | T-06 | Researcher y User | T-03 | Normalización, rol válido, documento; HU-02/HU-05 | 13 | Verificada el 15 |
 | T-07 | Autenticación y creación de laboratorista con fakes | T-06 | HU-01/HU-02; 401/403/409/422 y no exponer contraseña | 14 | Verificada el 16 con fakes; códigos HTTP pendientes de T-16 |
-| T-08 | Casos de catálogo, fotografía e investigadores con fakes | T-04/T-06 | HU-03/HU-04/HU-05; filtros, paginación, bajas y duplicados | 14 | Parcial el 16: alta de investigadores con fakes |
+| T-08 | Casos de catálogo, fotografía e investigadores con fakes | T-04/T-06 | HU-03/HU-04/HU-05; filtros, paginación, bajas y duplicados | 14 | Parcial el 16: alta y consultas de investigadores con fakes |
 | T-09 | LendEquipmentService con fakes | T-05/T-08 | HU-06 completa: límite, vencidos, stock y atomicidad | 15 | Pendiente |
 | T-10 | Devolución y consulta de vencidos | T-09 | HU-07/HU-09; devolución duplicada sin segundo incremento | 15 | Pendiente |
 | T-11 | Reporte agregado y puerto de lectura | T-09 | HU-10, ADR-004; snapshots permanecen tras renombrar | 16 | Pendiente |
@@ -28,7 +28,7 @@
 | T-22 | React con todos los flujos | T-16 | Login, usuarios admin, catálogo/fotos, investigadores, préstamos, devolución, vencidos y reporte; estados vacíos/error | 16 | Pendiente |
 | T-23 | Página pública de producto | - | Sin API; escritorio y 375 px; reglas/roles/vencidos, sin credenciales ni jerga del examen | 16 | Pendiente |
 
-El 17 es la verificación transversal y corrección de las 23 tareas, incluidos RNF-1 (5.000 equipos / 300 ms), al menos 15 archivos de pruebas y congruencia entre producto y documentos. No se añaden tareas T-24 ficticias ni se omiten T-18 a T-23 por considerarlas opcionales.
+La línea base reservaba el 17 a verificación transversal, pero el atraso exige continuar desarrollo ese día según [remaining-blocks.md](remaining-blocks.md). El cierre aún requiere las 23 tareas, RNF-1 (5.000 equipos / 300 ms), al menos 15 archivos significativos de pruebas y congruencia entre producto y documentos. No se añaden tareas T-24 ficticias ni se omiten T-18 a T-23 por considerarlas opcionales.
 
 ## Matriz de las reglas
 
