@@ -7,6 +7,7 @@ WORKDIR /app
 COPY api/composer.json api/composer.lock ./
 RUN composer install --no-interaction --prefer-dist --no-scripts --no-autoloader
 COPY api/ ./
+COPY infra/uploads.ini /usr/local/etc/php/conf.d/uploads.ini
 RUN mkdir -p bootstrap/cache storage/framework/views storage/logs \
     && composer dump-autoload --no-scripts
 EXPOSE 8000
