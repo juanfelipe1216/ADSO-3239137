@@ -13,7 +13,8 @@ use Lab\Domain\Equipment;
 use Lab\Domain\Loan;
 use Lab\Domain\LoanItem;
 use Lab\Domain\Researcher;
-use Lab\Domain\User;
+use Lab\Application\DTOs\AuthenticatedIdentity;
+use Lab\Domain\UserRole;
 use Lab\Domain\ValueObjects\DocumentNumber;
 use Lab\Domain\ValueObjects\Quantity;
 use Lab\Domain\ValueObjects\Reference;
@@ -32,7 +33,7 @@ final class LendEquipmentServiceTest extends TestCase
     private InMemoryResearcherReader $researchers;
     private InMemoryTransactionManager $transactions;
     private IdGenerator $ids;
-    private User $actor;
+    private AuthenticatedIdentity $actor;
     private DateTimeImmutable $now;
     private LendEquipmentService $service;
     private int $seedSequence = 0;
@@ -54,7 +55,7 @@ final class LendEquipmentServiceTest extends TestCase
             private int $next = 0;
             public function generate(): string { return 'generated-' . ++$this->next; }
         };
-        $this->actor = new User('operator-id', 'operator', 'fixture-hash', 'lab_technician');
+        $this->actor = new AuthenticatedIdentity('operator-id', UserRole::LabTechnician);
         $this->now = new DateTimeImmutable('2026-11-17T19:00:00-05:00');
         $this->service = $this->serviceWithClock(new FrozenClock($this->now));
     }
@@ -93,7 +94,7 @@ final class LendEquipmentServiceTest extends TestCase
     #[DataProvider('rolesAndSizes')]
     public function test_both_roles_lend_one_or_two_units_with_frozen_data_and_server_time(string $role, array $items): void
     {
-        $actor = new User('authenticated-id', 'operator', 'fixture-hash', $role);
+        $actor = new AuthenticatedIdentity('authenticated-id', UserRole::from($role));
         $result = $this->service->execute($actor, 'r-1', $items)->jsonSerialize();
         $loan = $this->loans->rows[$result['id']];
         self::assertSame('authenticated-id', $loan->loanedByUserId);

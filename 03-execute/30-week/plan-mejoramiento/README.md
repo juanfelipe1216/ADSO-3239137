@@ -6,7 +6,7 @@ Aplicación para administrar equipos, investigadores, préstamos y devoluciones 
 
 ## Estado del 18 de noviembre de 2026
 
-La base Laravel y PostgreSQL arrancan en contenedores. **El producto de negocio aún está pendiente:** no hay login, catálogo ni préstamos operativos por HTTP. Se verificaron 14 de las 23 tareas: T-01 a T-12, T-14 y T-18. Los servicios de catálogo, fotografías, alta de préstamos, devoluciones y consulta de vencidos están probados con fakes y el almacenamiento local con disco real. Los repositorios de usuarios, investigadores y equipos, sus lectores y el reporte agregado con datos congelados están verificados en PostgreSQL; escritura de préstamos, concurrencia real y HTTP siguen pendientes. La ruta confirmada por el usuario es `03-execute/30-week/plan-mejoramiento/`.
+Laravel y PostgreSQL arrancan en contenedores. Se verificaron 15 de las 23 tareas (T-01 a T-14 y T-18). Las rutas de salud, alta de préstamo y devolución funcionan por HTTP. El alta y la devolución requieren un JWT firmado. La prueba de concurrencia usa dos operadores y comprueba el stock confirmado en PostgreSQL. El inicio de sesión por HTTP y el aprovisionamiento del administrador siguen pendientes.
 
 El primer avance documental corresponde al 12 de noviembre. El usuario confirmó que el 13 no hubo avances: entre el 12 y el 19 quedan como máximo siete fechas reales de actividad. El requisito de ocho días queda pendiente de aclaración con la instructora; no se alterarán fechas ni se usarán commits de sincronización del curso para aparentar avances.
 
@@ -44,7 +44,7 @@ La aprobación exige promedio de al menos 70 % en los siete informes, ninguno me
 
 ## Arranque
 
-Desde esta carpeta, con Docker Desktop funcionando, copiar `.env.example` a `.env` y asignar una contraseña local aleatoria a `DB_PASSWORD`. No subir `.env`. Después:
+Desde esta carpeta, con Docker Desktop funcionando, copiar `.env.example` a `.env` y asignar una contraseña local aleatoria a `DB_PASSWORD` y un secreto aleatorio independiente de al menos 32 bytes a `JWT_SECRET`. No subir `.env`. Después:
 
 ```sh
 docker compose --env-file .env -f infra/compose.yaml up --build -d

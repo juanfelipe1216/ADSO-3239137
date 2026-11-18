@@ -14,7 +14,8 @@ use Lab\Domain\Equipment;
 use Lab\Domain\Loan;
 use Lab\Domain\LoanItem;
 use Lab\Domain\Researcher;
-use Lab\Domain\User;
+use Lab\Application\DTOs\AuthenticatedIdentity;
+use Lab\Domain\UserRole;
 use Lab\Domain\ValueObjects\DocumentNumber;
 use Lab\Domain\ValueObjects\Quantity;
 use Lab\Domain\ValueObjects\Reference;
@@ -228,7 +229,7 @@ final class ReturnItemServiceTest extends TestCase
             public function generate(): string { return 'new-' . ++$this->next; }
         };
         $lend = new LendEquipmentService($this->equipment, $researchers, $this->loans, $this->transactions, $clock, $ids);
-        $actor = new User('operator-2', 'operator', 'fixture-hash', 'lab_technician');
+        $actor = new AuthenticatedIdentity('operator-2', UserRole::LabTechnician);
         $return->execute('loan-1', 'item-a');
         self::assertSame('overdue', $this->loans->findById('loan-1')->status($clock->now()));
         $this->rejects('RESEARCHER_HAS_OVERDUE', fn () => $lend->execute($actor, 'researcher-1', ['a']));

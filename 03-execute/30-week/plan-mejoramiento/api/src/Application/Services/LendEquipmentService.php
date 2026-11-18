@@ -15,7 +15,7 @@ use Lab\Application\Ports\TransactionManager;
 use Lab\Domain\DomainViolation;
 use Lab\Domain\Loan;
 use Lab\Domain\LoanItem;
-use Lab\Domain\User;
+use Lab\Application\DTOs\AuthenticatedIdentity;
 
 final readonly class LendEquipmentService
 {
@@ -29,7 +29,7 @@ final readonly class LendEquipmentService
     ) {}
 
     /** @param list<string> $equipmentIds UUID syntax and authentication are checked at the HTTP boundary. */
-    public function execute(User $actor, string $researcherId, array $equipmentIds): LoanData
+    public function execute(AuthenticatedIdentity $actor, string $researcherId, array $equipmentIds): LoanData
     {
         if (trim($researcherId) === '' || !array_is_list($equipmentIds) || count($equipmentIds) < 1 || count($equipmentIds) > 2) {
             throw new DomainViolation('VALIDATION_ERROR', 'Selecciona un investigador y uno o dos equipos.');
@@ -77,7 +77,7 @@ final readonly class LendEquipmentService
             foreach ($equipmentIds as $id) {
                 $items[] = LoanItem::borrow($this->ids->generate(), $stored[$id]->equipment, $now);
             }
-            $loan = new Loan($loanId, $researcherId, $actor->id, $now, $items);
+            $loan = new Loan($loanId, $researcherId, $actor->userId, $now, $items);
             foreach ($withdrawn as $id => $item) {
                 $this->equipment->save($item, $stored[$id]->version);
             }

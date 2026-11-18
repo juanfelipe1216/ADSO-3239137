@@ -1,6 +1,6 @@
 # Tareas y trazabilidad
 
-**Estado al 18 de noviembre: 14/23 tareas de producto verificadas.** T-01 a T-12, T-14 y T-18 cuentan con evidencias en `docs/evidence/`. T-07 verifica los casos de uso con fakes; sus repositorios PostgreSQL están verificados en T-12 y HTTP sigue pendiente de T-16; hash y JWT reales están verificados en T-14. T-08 incluye fotografías con fakes. T-09 y T-10 verifican alta de préstamos, límite acumulado, devolución, consulta de vencidos, stock y rollback con fakes; escritura y carreras reales siguen en T-13. T-11 verifica el reporte con fakes y PostgreSQL, incluidos snapshots y privacidad de campos. T-15 tiene almacenamiento local verificado; integración HTTP pendiente. Las fechas objetivo originales se conservan para mostrar el desvío del cronograma.
+**Estado al 18 de noviembre: 15/23 tareas verificadas.** T-01 a T-14 y T-18 tienen evidencia. T-13 comprueba persistencia y carreras por HTTP en PostgreSQL. T-15 sigue parcial y T-16 tiene tres de las 21 operaciones conectadas.
 
 | ID | Tarea adaptada | Depende de | Requisito / evidencia de cierre | Objetivo | Estado |
 |---|---|---|---|---|---|
@@ -12,14 +12,14 @@
 | T-06 | Researcher y User | T-03 | Normalización, rol válido, documento; HU-02/HU-05 | 13 | Verificada el 15 |
 | T-07 | Autenticación y creación de laboratorista con fakes | T-06 | HU-01/HU-02; 401/403/409/422 y no exponer contraseña | 14 | Verificada el 16 con fakes; códigos HTTP pendientes de T-16 |
 | T-08 | Casos de catálogo, fotografía e investigadores con fakes | T-04/T-06 | HU-03/HU-04/HU-05; filtros, paginación, bajas y duplicados | 14 | Verificada el 17 con fakes; integración HTTP pendiente |
-| T-09 | LendEquipmentService con fakes | T-05/T-08 | HU-06 completa: límite, vencidos, stock y atomicidad | 15 | Verificada el 17 con fakes; concurrencia/HTTP pendientes de T-13/T-16 |
-| T-10 | Devolución y consulta de vencidos | T-09 | HU-07/HU-09; devolución duplicada sin segundo incremento | 15 | Verificada con fakes: devolución el 17 y vencidos el 18; PostgreSQL/HTTP pendientes |
+| T-09 | LendEquipmentService con fakes | T-05/T-08 | HU-06 completa: límite, vencidos, stock y atomicidad | 15 | Verificada el 17 con fakes; alta concurrente verificada en T-13 |
+| T-10 | Devolución y consulta de vencidos | T-09 | HU-07/HU-09; devolución duplicada sin segundo incremento | 15 | Verificada con fakes: devolución el 17 y vencidos el 18; devolución HTTP y lector PostgreSQL verificados en T-13 |
 | T-11 | Reporte agregado y puerto de lectura | T-09 | HU-10, ADR-004; snapshots permanecen tras renombrar | 16 | Verificada el 18 con fakes y lector PostgreSQL; HTTP pendiente de T-16 |
 | T-12 | Repositorios de equipo, investigador y usuario | T-02/T-08 | PostgreSQL real; mismos contratos que los fakes | 14 | Verificada el 17: repositorios, lectores y contratos compartidos |
-| T-13 | Repositorio de préstamos, versión y transacción | T-12/T-09 | RNF-2: peticiones concurrentes 201/409; máximo por investigador | 15 | Pendiente |
+| T-13 | Repositorio de préstamos, versión y transacción | T-12/T-09 | RNF-2: peticiones concurrentes 201/409; máximo por investigador | 15 | Verificada el 18 con PostgreSQL y HTTP |
 | T-14 | Hash Argon2id y JWT firmado | T-07 | RNF-3: expiración, firma, rol, logs/respuestas sin secretos | 14 | Adaptadores verificados el 16; RNF-3 HTTP/logs/TLS pendiente |
 | T-15 | Almacenamiento de fotos | T-08 | 2 MiB válido, exceso/tipo falso 422, descarga autorizada y clave null | 14 | Parcial el 17: disco y validación probados; descarga HTTP autenticada pendiente |
-| T-16 | Las 21 operaciones HTTP y error uniforme | T-10/T-11/T-14/T-15 | RNF-4: matriz de rutas, roles, entradas y códigos | 16 | Pendiente |
+| T-16 | Las 21 operaciones HTTP y error uniforme | T-10/T-11/T-14/T-15 | RNF-4: matriz de rutas, roles, entradas y códigos | 16 | Parcial: salud, alta de préstamo y devolución |
 | T-17 | Composición y admin desde entorno | T-16 | Arranque desde DB vacía, admin inicia sesión, reinicio idempotente | 16 | Pendiente |
 | T-18 | CHECK de total positivo y rol en motor | T-02 | SQL inválido rechazado; modelo actualizado tras comprobarlo | 16 | Verificada el 16 en PostgreSQL |
 | T-19 | Pruebas de dependencia y composición | T-17 | Artículos I-III; prueba falla al introducir dependencia prohibida | 16 | Pendiente |

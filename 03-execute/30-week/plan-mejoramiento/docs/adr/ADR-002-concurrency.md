@@ -1,6 +1,6 @@
 # ADR-002: stock y préstamos simultáneos
 
-- Estado: propuesta, 12 de noviembre de 2026.
+- Estado: aceptada. Alta, devolución y límite verificados el 18 de noviembre. Ver [evidencia](../evidence/2026-11-18-concurrent-loans.md).
 - Contexto: dos operadores pueden entregar la última unidad, devolver la misma línea o superar el máximo de un investigador con equipos distintos.
 - Decisión: usar `xmin::text` de PostgreSQL como testigo transitorio en lecturas/escrituras optimistas de equipo. La operación se confirma solo si todas las escrituras condicionadas afectan una fila. Un CHECK protege el rango. Un bloqueo transaccional asesor derivado del id del investigador serializa sus operaciones mientras se verifican pendientes y vencidos. La devolución escribe solo si `returned_at IS NULL` y restituye stock en esa transacción.
 - Alternativas: contador en memoria (no coordina procesos); campo version propio (agrega esquema innecesario); únicamente CHECK de stock (no protege máximo por investigador); bloqueo global (impide paralelismo ajeno al conflicto).

@@ -18,10 +18,10 @@ Los doce bloques del 17 **no caben en el horario original de 19:00 a 22:00**. Es
 | B04 | 16 | T-14: Argon2id y JWT real | Hash verificado; firma, expiración, algoritmo y rol rechazados si inválidos | Verificado en esta sesión |
 | B05 | 17, primer tramo | T-08/T-15: fotografía y cierre de servicios de catálogo | JPG/PNG por contenido, 2 MiB, clave opaca y limpieza segura | Servicios y disco verificados el 17; HTTP pendiente |
 | B06 | 17, primer tramo | T-12: repositorios y lectores PostgreSQL | Contratos compartidos con fakes, duplicados, filtros, paginación y total | Verificado el 17; dos avances probados y publicados por separado |
-| B07 | 17, primer tramo | T-09: prestar equipos | Límite acumulado, vencidos, duplicados, stock y rollback con fakes | Verificado el 17 con 31 pruebas nuevas; PostgreSQL concurrente pendiente de B10 |
+| B07 | 17, primer tramo | T-09: prestar equipos | Límite acumulado, vencidos, duplicados, stock y rollback con fakes | Verificado el 17 con 31 pruebas nuevas; carreras PostgreSQL verificadas en B10 |
 | B08 | 17, primer tramo | T-10: devolver y consultar vencidos | Devolución única, stock, fechas UTC y días completos | Verificado con fakes: devolución publicada el 17, vencidos y cierre el 18 |
 | B09 | 17, segundo tramo | T-11: reporte congelado | Renombrar catálogo no altera agrupación histórica; sin identidades | Verificado el 18: servicio con fakes y lector PostgreSQL, publicados por separado tras pruebas |
-| B10 | 17, segundo tramo | T-13: préstamos/transacciones y concurrencia | Conexiones reales: última unidad 201/409; devolución 200/409; límite por investigador | Pendiente |
+| B10 | 17, segundo tramo | T-13: préstamos/transacciones y concurrencia | Conexiones reales: última unidad 201/409; devolución 200/409; límite por investigador | Verificado el 18 por HTTP con dos procesos y dos sesiones PostgreSQL |
 | B11 | 17, segundo tramo | T-16: 21 operaciones HTTP | Matriz de rutas/roles/validación, error uniforme, sin endpoints extra | Pendiente |
 | B12 | 17, segundo tramo | T-17/T-19: composición, admin y arquitectura | Arranque idempotente desde base vacía y detectores de dependencia prohibida | Pendiente |
 | B13 | 17, tercer tramo | T-20: Compose y base React | Un comando levanta db/api/app; configuración documentada y sin secretos | Pendiente |
@@ -31,7 +31,7 @@ Los doce bloques del 17 **no caben en el horario original de 19:00 a 22:00**. Es
 | B17 | 18 | Revisión del proyecto formativo, obligatoria aparte | Evidencia de secciones 00-06 y congruencia; corregir brechas reales y señalar lo no resuelto | Pendiente |
 | B18 | 18 | Reproducción final y auditoría del plan | Instalación aislada, pruebas, idioma, secretos, documentación e historial por carpeta/fecha | Pendiente |
 
-Al 18 de noviembre, B08 quedó cerrado con fakes y B09 con fakes y lector PostgreSQL; B10-B18 siguen pendientes. El objetivo interno de terminar el producto el 17 no se alcanzó; el trabajo de B08/B09 realizado el 18 se registra como desarrollo, no como revisión. Las fechas objetivo de la tabla conservan el plan original y no sustituyen las fechas de evidencia ni las de Git.
+Al 18 de noviembre, B08 quedó cerrado con fakes y B09 con fakes y lector PostgreSQL; B10 quedó verificado por HTTP y B11-B18 siguen pendientes de cierre. El objetivo interno de terminar el producto el 17 no se alcanzó; el trabajo de B08/B09 realizado el 18 se registra como desarrollo, no como revisión. Las fechas objetivo de la tabla conservan el plan original y no sustituyen las fechas de evidencia ni las de Git.
 
 El orden es técnico. B03 adelanta la verificación de CHECK porque depende de la migración T-02 ya ejecutable, no de disponer de repositorios; no cambia el esquema exigido. B04 depende de T-07 ya verificada. B10 requiere los casos previos y persistencia; no se declara RNF-2 por probar únicamente fakes. El cierre de B11 puede necesitar comprobación posterior a B12: no marcar T-16 completa antes de tener el sistema compuesto y ejecutar HTTP real.
 

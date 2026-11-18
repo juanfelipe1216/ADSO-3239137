@@ -18,7 +18,8 @@ final class LoanPersistenceTest extends LoanDatabaseCase
 {
     public function test_round_trip_and_transaction_rollback(): void
     {
-        $actor = $this->actor();
+        $user = $this->actor();
+        $actor = new \Lab\Application\DTOs\AuthenticatedIdentity($user->id, $user->role);
         $researcher = $this->researcher();
         $equipment = $this->equipment();
         $at = new DateTimeImmutable('2026-11-18T15:00:00.123456Z');
@@ -42,7 +43,7 @@ final class LoanPersistenceTest extends LoanDatabaseCase
         $result = $lend->execute($actor, $researcher, [$equipment])->jsonSerialize();
         $loan = $loans->findById($result['id']);
         self::assertEquals($at, $loan->loanedAt);
-        self::assertSame($actor->id, $loan->loanedByUserId);
+        self::assertSame($actor->userId, $loan->loanedByUserId);
         $item = $loan->items[0];
         self::assertSame('medición', $item->categoryName);
         $reader = app(OverdueReader::class);
