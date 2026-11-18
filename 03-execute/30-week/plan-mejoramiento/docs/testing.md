@@ -1,6 +1,6 @@
 # Estrategia de pruebas y entrega
 
-Inventario previsto, **sin pruebas implementadas ni ejecutadas todavía**. El mínimo del acta es 15 archivos; se proponen los siguientes porque comprueban comportamientos diferentes, no para subdividir aserciones artificialmente.
+Inventario de cobertura objetivo. Al 18 de noviembre existen **30 archivos con 272 casos y 1.005 aserciones aprobadas**; cada cierre comprobado está en [tasks.md](tasks.md) y `evidence/`. La tabla incluye pruebas implementadas y otras pendientes, y sus nombres previstos no sustituyen la evidencia real. El mínimo del acta es 15 archivos; se proponen comportamientos diferentes, sin subdividir aserciones artificialmente.
 
 | Archivo previsto | Qué debe demostrar |
 |---|---|
@@ -16,7 +16,7 @@ Inventario previsto, **sin pruebas implementadas ni ejecutadas todavía**. El m�
 | Application/ResearcherServicesTest.php | Crear/buscar investigador y documento único |
 | Application/LendEquipmentServiceTest.php | Límite acumulado, vencidos, disponibilidad y rollback lógico |
 | Application/ReturnItemServiceTest.php | Devolución única y existencias |
-| Application/OverdueServiceTest.php | Comparación estricta de instantes y días completos |
+| Application/ListOverdueServiceTest.php | Comparación estricta de instantes, orden, días completos y devolución seguida de consulta |
 | Application/MostBorrowedReportServiceTest.php | Rango y lector de snapshots |
 | Integration/RepositoryContractTest.php | Repositorios reales equivalentes a fakes |
 | Integration/SchemaConstraintsTest.php | FK/UNIQUE/CHECK, columnas exactas, sin DEFAULT |

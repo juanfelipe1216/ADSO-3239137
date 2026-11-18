@@ -56,7 +56,7 @@ final readonly class LoanItem
             return 0;
         }
 
-        return intdiv($now->getTimestamp() - $this->dueAt->getTimestamp(), 86400);
+        return $this->dueAt->diff($now->setTimezone(new DateTimeZone('UTC')))->days;
     }
 
     public function returnAt(DateTimeImmutable $at): self

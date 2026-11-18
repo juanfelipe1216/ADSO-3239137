@@ -11,6 +11,7 @@ use Lab\Domain\LoanItem;
 use Lab\Domain\ValueObjects\Quantity;
 use Lab\Domain\ValueObjects\Reference;
 use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 final class LoanItemTest extends TestCase
 {
@@ -65,6 +66,36 @@ final class LoanItemTest extends TestCase
         } catch (DomainViolation $error) {
             self::assertSame('ITEM_ALREADY_RETURNED', $error->errorCode);
         }
+    }
+
+    public static function fractionalDayBoundaries(): array
+    {
+        return [
+            ['2026-11-21T00:00:00.899999Z', false, 0],
+            ['2026-11-21T00:00:00.900000Z', false, 0],
+            ['2026-11-21T00:00:00.900001Z', true, 0],
+            ['2026-11-22T00:00:00.100000Z', true, 0],
+            ['2026-11-22T00:00:00.899999Z', true, 0],
+            ['2026-11-21T19:00:00.900000-05:00', true, 1],
+            ['2026-11-23T00:00:00.899999Z', true, 1],
+            ['2026-11-23T00:00:00.900000Z', true, 2],
+        ];
+    }
+
+    #[DataProvider('fractionalDayBoundaries')]
+    public function test_complete_days_do_not_round_up_fractional_seconds(string $at, bool $overdue, int $days): void
+    {
+        $item = LoanItem::borrow('item-1', $this->equipment(), new DateTimeImmutable('2026-11-16T00:00:00.900000Z'));
+        $now = new DateTimeImmutable($at);
+        self::assertSame($overdue, $item->isOverdue($now));
+        self::assertSame($days, $item->daysLate($now));
+    }
+
+    public function test_complete_days_use_elapsed_utc_time_across_daylight_saving(): void
+    {
+        $item = LoanItem::borrow('item-1', $this->equipment(), new DateTimeImmutable('2026-10-27T04:00:00Z'));
+        $now = new DateTimeImmutable('2026-11-01 23:00:00', new \DateTimeZone('America/New_York'));
+        self::assertSame(1, $item->daysLate($now));
     }
 
     public function test_return_cannot_precede_the_loan(): void
