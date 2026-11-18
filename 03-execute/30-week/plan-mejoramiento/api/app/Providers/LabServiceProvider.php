@@ -23,6 +23,8 @@ use Lab\Application\Ports\ResearcherReader;
 use Lab\Application\Ports\EquipmentRepository;
 use Lab\Application\Ports\EquipmentReader;
 use Lab\Application\Ports\CategoryReader;
+use Lab\Application\Ports\ReportReader;
+use Lab\Adapters\Persistence\PostgresReportReader;
 
 final class LabServiceProvider extends ServiceProvider
 {
@@ -35,6 +37,7 @@ final class LabServiceProvider extends ServiceProvider
         $this->app->alias(PostgresEquipmentRepository::class, EquipmentRepository::class);
         $this->app->alias(PostgresEquipmentRepository::class, EquipmentReader::class);
         $this->app->singleton(CategoryReader::class, fn ($app) => new PostgresCategories($app['db']->connection()));
+        $this->app->singleton(ReportReader::class, fn ($app) => new PostgresReportReader($app['db']->connection()));
         $this->app->singleton(Clock::class, SystemClock::class);
         $this->app->singleton(PasswordHasher::class, ArgonPasswordHasher::class);
         $this->app->singleton(CoverStorage::class, fn () => new LocalCoverStorage((string) config('lab.covers_dir')));
