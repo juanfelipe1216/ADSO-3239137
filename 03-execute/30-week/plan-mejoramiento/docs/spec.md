@@ -1,6 +1,6 @@
 # Especificación de Préstamo de equipos de laboratorio
 
-Estado al 16 de noviembre: T-01 a T-07, T-14 y T-18 verificadas; historias completas por HTTP aún pendientes. Esta especificación mantiene el alcance exigido, no certifica por sí misma su cumplimiento. Las decisiones de adaptación se explican en [ADR-005](adr/ADR-005-domain-adaptation.md). El contrato y el esquema se definen únicamente en [api-contract.md](api-contract.md) y [data-model.md](data-model.md).
+Estado al 17 de noviembre: T-01 a T-09, T-12, T-14 y T-18 verificadas; T-09 prueba préstamos con fakes, no concurrencia real. Historias completas por HTTP aún pendientes. Esta especificación mantiene el alcance exigido, no certifica por sí misma su cumplimiento. Las decisiones de adaptación se explican en [ADR-005](adr/ADR-005-domain-adaptation.md). El contrato y el esquema se definen únicamente en [api-contract.md](api-contract.md) y [data-model.md](data-model.md).
 
 ## Actores y alcance
 

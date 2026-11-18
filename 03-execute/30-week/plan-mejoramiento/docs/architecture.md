@@ -1,6 +1,6 @@
 # Arquitectura
 
-Diseño objetivo. Al 17 de noviembre están implementados el arranque Laravel, la migración PostgreSQL, los objetos del dominio y los casos de login/creación de laboratoristas con fakes (T-01 a T-07). T-08 verifica servicios de investigadores, catálogo y fotografías con fakes. También están verificados los adaptadores reales de hash/JWT, almacenamiento local y repositorios/lectores PostgreSQL de T-12, compuestos únicamente en LabServiceProvider. Persistencia de préstamos, demás servicios e interfaces siguen pendientes. Monolito modular con arquitectura hexagonal. React consumirá HTTP; Laravel adaptará peticiones a casos de uso; PostgreSQL persistirá el negocio. La página pública no consumirá la API.
+Diseño objetivo. Al 17 de noviembre están implementados el arranque Laravel, la migración PostgreSQL, los objetos del dominio y los casos de login/creación de laboratoristas con fakes (T-01 a T-07). T-08 verifica servicios de investigadores, catálogo y fotografías con fakes; T-09 verifica alta de préstamos y rollback con fakes. También están verificados los adaptadores reales de hash/JWT, almacenamiento local y repositorios/lectores PostgreSQL de T-12, compuestos únicamente en LabServiceProvider. Persistencia de préstamos, demás servicios e interfaces siguen pendientes. Monolito modular con arquitectura hexagonal. React consumirá HTTP; Laravel adaptará peticiones a casos de uso; PostgreSQL persistirá el negocio. La página pública no consumirá la API.
 
 ```mermaid
 flowchart LR
@@ -49,6 +49,10 @@ Los objetos del dominio implementados son inmutables: retirar, restituir, editar
 Cada servicio realiza una acción: `LoginService`, `CreateLabTechnicianService`, `CreateEquipmentService`, `UpdateEquipmentService`, `SearchEquipmentService`, `RetireEquipmentService`, `UploadCoverService`, `RemoveCoverService`, `CreateResearcherService`, `LendEquipmentService`, `ReturnItemService`, `ListOverdueService`, `MostBorrowedReportService` y consultas de detalle/listado.
 
 ## Flujo de préstamo y concurrencia
+
+T-09 implementa `LendEquipmentService` con puertos propios. `TransactionManager::forResearcher` define una transacción que serializa las operaciones del mismo investigador antes del callback y revierte cualquier `Throwable`. El servicio lee Clock y pendientes dentro de ese callback, valida todos los equipos activos antes de vencidos/límite/stock, escribe equipos en orden de id y agrega la cabecera con sus líneas congeladas. Conserva el orden de líneas solicitado en la respuesta. `DomainViolation::context` transporta el dato de negocio `active_loans` al exceder el límite; el futuro adaptador HTTP lo convertirá en `details`, sin importar HTTP en el núcleo.
+
+El fake de T-09 restaura las colecciones de equipos y préstamos y libera su marca de bloqueo tras un fallo. Esto prueba la coordinación del caso de uso y sus errores; no demuestra aislamiento entre procesos. Los adaptadores PostgreSQL de `LoanRepository` y `TransactionManager`, su composición y carreras siguen pendientes de T-13/T-17. La sintaxis UUID, los campos adicionales y la autenticación de la petición se comprobarán en T-16; el operador y la fecha no son argumentos libres del cliente en este servicio.
 
 T-12 verifica escrituras de catálogo condicionadas por `xmin`, id, referencia inmutable y estado activo. `xmin` identifica la transacción que escribió la fila; no es un contador por sentencia dentro de una misma transacción. La prueba de versión usa escrituras confirmadas por separado. No se reutilizará un testigo antiguo para sucesivas modificaciones del mismo equipo dentro de una transacción. Las carreras reales y su traducción HTTP siguen pendientes de T-13/T-16.
 
