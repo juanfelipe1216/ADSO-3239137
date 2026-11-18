@@ -25,11 +25,23 @@ use Lab\Application\Ports\EquipmentReader;
 use Lab\Application\Ports\CategoryReader;
 use Lab\Application\Ports\ReportReader;
 use Lab\Adapters\Persistence\PostgresReportReader;
+use Lab\Adapters\Persistence\PostgresLoanRepository;
+use Lab\Adapters\Persistence\PostgresTransactionManager;
+use Lab\Adapters\Identity\UuidGenerator;
+use Lab\Application\Ports\IdGenerator;
+use Lab\Application\Ports\LoanRepository;
+use Lab\Application\Ports\OverdueReader;
+use Lab\Application\Ports\TransactionManager;
 
 final class LabServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
+        $this->app->singleton(IdGenerator::class, UuidGenerator::class);
+        $this->app->singleton(TransactionManager::class, fn ($app) => new PostgresTransactionManager($app['db']->connection()));
+        $this->app->singleton(PostgresLoanRepository::class, fn ($app) => new PostgresLoanRepository($app['db']->connection()));
+        $this->app->alias(PostgresLoanRepository::class, LoanRepository::class);
+        $this->app->alias(PostgresLoanRepository::class, OverdueReader::class);
         $this->app->singleton(UserRepository::class, fn ($app) => new PostgresUserRepository($app['db']->connection()));
         $this->app->singleton(ResearcherRepository::class, fn ($app) => new PostgresResearcherRepository($app['db']->connection()));
         $this->app->singleton(ResearcherReader::class, fn ($app) => new PostgresResearcherReader($app['db']->connection()));
