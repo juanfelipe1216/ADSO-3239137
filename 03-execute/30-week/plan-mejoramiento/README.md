@@ -6,7 +6,7 @@ Aplicación para administrar equipos, investigadores, préstamos y devoluciones 
 
 ## Estado del 18 de noviembre de 2026
 
-Laravel y PostgreSQL arrancan en contenedores. Se verificaron 17 de las 23 tareas (T-01 a T-16 y T-18). Las 21 operaciones están conectadas y probadas: login, usuarios, catálogo/fotos, investigadores, préstamos, devolución, vencidos y reporte. La suite pasa con 321 casos y 1.493 aserciones en 38 archivos, incluidas carreras HTTP contra PostgreSQL y carga multipart real. El administrador de las pruebas es una fixture; su aprovisionamiento desde entorno, React y el cierre del producto siguen pendientes. Véase la [evidencia B11](docs/evidence/2026-11-18-http-contract.md).
+Laravel y PostgreSQL arrancan en contenedores. Se verificaron 19 de las 23 tareas (T-01 a T-19). Las 21 operaciones están conectadas y probadas: login, usuarios, catálogo/fotos, investigadores, préstamos, devolución, vencidos y reporte. La suite pasa con 328 casos y 1.682 aserciones en 41 archivos, incluidas carreras HTTP contra PostgreSQL y carga multipart real. B12 aprovisiona el administrador desde entorno y verifica el arranque repetido en una base vacía. React y el cierre del producto siguen pendientes. Véase la [evidencia B11](docs/evidence/2026-11-18-http-contract.md).
 
 El primer avance documental corresponde al 12 de noviembre. El usuario confirmó que el 13 no hubo avances: entre el 12 y el 19 quedan como máximo siete fechas reales de actividad. El requisito de ocho días queda pendiente de aclaración con la instructora; no se alterarán fechas ni se usarán commits de sincronización del curso para aparentar avances.
 
@@ -44,11 +44,11 @@ La aprobación exige promedio de al menos 70 % en los siete informes, ninguno me
 
 ## Arranque
 
-Desde esta carpeta, con Docker Desktop funcionando, copiar `.env.example` a `.env` y asignar una contraseña local aleatoria a `DB_PASSWORD` y un secreto aleatorio independiente de al menos 32 bytes a `JWT_SECRET`. No subir `.env`. Después:
+Desde esta carpeta, con Docker Desktop funcionando, copiar `.env.example` a `.env` y asignar una contraseña local aleatoria a `DB_PASSWORD` y un secreto aleatorio independiente de al menos 32 bytes a `JWT_SECRET`. Configurar también `ADMIN_USERNAME` y `ADMIN_PASSWORD` (12-128 caracteres). No subir `.env`. Después:
 
 ```sh
 docker compose --env-file .env -f infra/compose.yaml up --build -d
 docker compose --env-file .env -f infra/compose.yaml exec -T api composer test
 ```
 
-La salud responde en `http://127.0.0.1:8081/api/v1/health`. Este arranque incluye API y PostgreSQL con migración automática; frontend y admin siguen pendientes de T-17/T-20. La contraseña local de la base se recibe de `.env`. `CORS_ORIGIN` admite un único origen de frontend; vacío no habilita acceso desde otro origen. No publicar secretos ni usar el servidor HTTP local como despliegue remoto.
+La salud responde en `http://127.0.0.1:8081/api/v1/health`. Este arranque incluye API y PostgreSQL con migración automática; el frontend sigue pendiente de T-20. La contraseña local de la base se recibe de `.env`. `CORS_ORIGIN` admite un único origen de frontend; vacío no habilita acceso desde otro origen. No publicar secretos ni usar el servidor HTTP local como despliegue remoto.

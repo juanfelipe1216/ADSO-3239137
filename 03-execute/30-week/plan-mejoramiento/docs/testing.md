@@ -1,6 +1,6 @@
 # Estrategia de pruebas y entrega
 
-Inventario de cobertura objetivo. Al 18 de noviembre existen **38 archivos con 321 casos y 1.493 aserciones aprobadas**; cada cierre comprobado está en [tasks.md](tasks.md) y `evidence/`. La tabla incluye pruebas implementadas y otras pendientes, y sus nombres previstos no sustituyen la evidencia real. El mínimo del acta es 15 archivos; se proponen comportamientos diferentes, sin subdividir aserciones artificialmente.
+Inventario de cobertura objetivo. Al 18 de noviembre existen **41 archivos con 328 casos y 1.682 aserciones aprobadas**; cada cierre comprobado está en [tasks.md](tasks.md) y `evidence/`. La tabla incluye pruebas implementadas y otras pendientes, y sus nombres previstos no sustituyen la evidencia real. El mínimo del acta es 15 archivos; se proponen comportamientos diferentes, sin subdividir aserciones artificialmente.
 
 | Archivo previsto | Qué debe demostrar |
 |---|---|

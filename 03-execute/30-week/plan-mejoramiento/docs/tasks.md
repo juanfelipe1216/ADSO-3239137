@@ -1,6 +1,6 @@
 # Tareas y trazabilidad
 
-**Estado al 18 de noviembre: 17/23 tareas verificadas.** T-01 a T-16 y T-18 tienen evidencia. T-13 comprueba persistencia y carreras por HTTP en PostgreSQL. T-15 verifica multipart real y T-16 las 21 operaciones, roles y errores; [evidencia B11](evidence/2026-11-18-http-contract.md). El admin inicial desde entorno y la reconstrucción idempotente siguen en T-17.
+**Estado al 18 de noviembre: 19/23 tareas verificadas.** T-01 a T-19 tienen evidencia. T-13 comprueba persistencia y carreras por HTTP en PostgreSQL. T-15 verifica multipart real y T-16 las 21 operaciones, roles y errores; [evidencia B11](evidence/2026-11-18-http-contract.md). T-17 y T-19 verificadas en B12: base vacía, reinicio, login y detectores arquitectónicos.
 
 | ID | Tarea adaptada | Depende de | Requisito / evidencia de cierre | Objetivo | Estado |
 |---|---|---|---|---|---|
@@ -20,9 +20,9 @@
 | T-14 | Hash Argon2id y JWT firmado | T-07 | RNF-3: expiración, firma, rol, logs/respuestas sin secretos | 14 | Adaptadores verificados el 16; roles/expiración/respuestas/logs HTTP verificados el 18; TLS remoto pendiente |
 | T-15 | Almacenamiento de fotos | T-08 | 2 MiB válido, exceso/tipo falso 422, descarga autorizada y clave null | 14 | Verificada el 18: PUT multipart real, 2 MiB/exceso, contenido falso, descarga autenticada y eliminación |
 | T-16 | Las 21 operaciones HTTP y error uniforme | T-10/T-11/T-14/T-15 | RNF-4: matriz de rutas, roles, entradas y códigos | 16 | Verificada el 18: inventario exacto, permisos, validaciones, ciclo de préstamo y errores uniformes |
-| T-17 | Composición y admin desde entorno | T-16 | Arranque desde DB vacía, admin inicia sesión, reinicio idempotente | 16 | Pendiente |
+| T-17 | Composición y admin desde entorno | T-16 | Arranque desde DB vacía, admin inicia sesión, reinicio idempotente | 16 | Verificada el 18: base vacía aislada, login HTTP y repetición sin cambios |
 | T-18 | CHECK de total positivo y rol en motor | T-02 | SQL inválido rechazado; modelo actualizado tras comprobarlo | 16 | Verificada el 16 en PostgreSQL |
-| T-19 | Pruebas de dependencia y composición | T-17 | Artículos I-III; prueba falla al introducir dependencia prohibida | 16 | Pendiente |
+| T-19 | Pruebas de dependencia y composición | T-17 | Artículos I-III; prueba falla al introducir dependencia prohibida | 16 | Verificada el 18: dependencias del núcleo y composición con mutaciones de prueba |
 | T-20 | Compose con db, api y app | T-17 | RNF-5: un comando tras configurar entorno; DDL solo en API | 16 | Pendiente |
 | T-21 | Sembrador HTTP | T-17 | >=40 equipos, >=10 investigadores, >=15 préstamos, exactamente 3 líneas vencidas; restauración de reloj | 16 | Pendiente |
 | T-22 | React con todos los flujos | T-16 | Login, usuarios admin, catálogo/fotos, investigadores, préstamos, devolución, vencidos y reporte; estados vacíos/error | 16 | Pendiente |
