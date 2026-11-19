@@ -14,6 +14,10 @@ return Application::configure(basePath: dirname(__DIR__))
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         $exceptions->dontReport([\Lab\Domain\DomainViolation::class]);
+        $exceptions->report(function (Throwable $exception) {
+            \Illuminate\Support\Facades\Log::error('Fallo interno de la aplicación.', ['type' => $exception::class]);
+            return false;
+        });
         $exceptions->render(function (Throwable $exception, Request $request) {
             if ($exception instanceof \Lab\Domain\DomainViolation) {
                 $status = match ($exception->errorCode) {

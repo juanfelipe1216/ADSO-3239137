@@ -46,7 +46,8 @@ final class CatalogHttpTest extends TestCase
             ['POST', '/equipment'], ['PUT', "/equipment/$id"], ['DELETE', "/equipment/$id"],
             ['PUT', "/equipment/$id/cover"], ['GET', "/equipment/$id/cover"], ['DELETE', "/equipment/$id/cover"],
             ['GET', '/researchers'], ['POST', '/researchers'], ['GET', "/researchers/$id"],
-            ['POST', '/loans'], ['POST', "/loans/$id/items/$id/return"], ['GET', '/reports/most-borrowed']];
+            ['POST', '/loans'], ['GET', '/loans'], ['GET', "/loans/$id"], ['GET', '/loans/overdue'],
+            ['POST', "/loans/$id/items/$id/return"], ['GET', '/reports/most-borrowed']];
     }
 
     #[DataProvider('protectedRoutes')]
@@ -94,6 +95,24 @@ final class CatalogHttpTest extends TestCase
         $this->postJson('/api/v1/researchers', ['full_name' => 'Otro', 'document_number' => $doc])->assertStatus(409);
         $this->getJson("/api/v1/researchers/$researcher")->assertOk()->assertJsonPath('active_loans', 0);
         $this->getJson('/api/v1/researchers?q=' . $doc)->assertOk()->assertJsonPath('total', 1);
+        $this->postJson('/api/v1/loans', ['researcher_id' => $researcher,
+            'items' => [['equipment_id' => $id], ['equipment_id' => $id]]])
+            ->assertStatus(422)->assertJsonPath('code', 'DUPLICATE_EQUIPMENT_IN_LOAN');
+        $loan = $this->postJson('/api/v1/loans', ['researcher_id' => $researcher, 'items' => [['equipment_id' => $id]]])
+            ->assertCreated()->json();
+        $this->deleteJson("/api/v1/equipment/$id")->assertStatus(409)->assertJsonPath('code', 'EQUIPMENT_HAS_OPEN_LOANS');
+        $edited['name'] = 'Nombre posterior al préstamo';
+        $this->putJson("/api/v1/equipment/$id", $edited)->assertOk();
+        $day = substr($loan['loaned_at'], 0, 10);
+        $reportPath = "/api/v1/reports/most-borrowed?from=$day&to=$day";
+        $rows = $this->getJson($reportPath)->assertOk()->json('rows');
+        $historical = array_values(array_filter($rows, fn ($row) => $row['equipment_id'] === $id));
+        self::assertSame([['equipment_id' => $id, 'equipment_name' => $data['name'],
+            'category_name' => 'medición', 'times_borrowed' => 1]], $historical);
+        $item = $loan['items'][0]['id'];
+        $this->call('POST', '/api/v1/loans/' . $loan['id'] . "/items/$item/return",
+            server: ['HTTP_AUTHORIZATION' => 'Bearer ' . $this->token], content: '{}')->assertOk();
+        self::assertSame($rows, $this->getJson($reportPath)->assertOk()->json('rows'));
         $this->getJson('/api/v1/reports/most-borrowed?from=2045-01-01&to=2045-01-01')->assertOk()->assertJsonPath('rows', []);
         $this->deleteJson("/api/v1/equipment/$id")->assertNoContent();
         $this->getJson("/api/v1/equipment/$id")->assertNotFound();

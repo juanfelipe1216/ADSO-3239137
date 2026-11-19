@@ -1,6 +1,6 @@
 # Estrategia de pruebas y entrega
 
-Inventario de cobertura objetivo. Al 18 de noviembre existen **34 archivos con 291 casos y 1.108 aserciones aprobadas**; cada cierre comprobado está en [tasks.md](tasks.md) y `evidence/`. La tabla incluye pruebas implementadas y otras pendientes, y sus nombres previstos no sustituyen la evidencia real. El mínimo del acta es 15 archivos; se proponen comportamientos diferentes, sin subdividir aserciones artificialmente.
+Inventario de cobertura objetivo. Al 18 de noviembre existen **38 archivos con 321 casos y 1.493 aserciones aprobadas**; cada cierre comprobado está en [tasks.md](tasks.md) y `evidence/`. La tabla incluye pruebas implementadas y otras pendientes, y sus nombres previstos no sustituyen la evidencia real. El mínimo del acta es 15 archivos; se proponen comportamientos diferentes, sin subdividir aserciones artificialmente.
 
 | Archivo previsto | Qué debe demostrar |
 |---|---|
@@ -34,6 +34,8 @@ Inventario de cobertura objetivo. Al 18 de noviembre existen **34 archivos con 2
 | Architecture/DependencyRulesTest.php | Dependencias internas y único punto de composición |
 
 Se agregarán pruebas React para autorización visual, errores del contrato, formularios, paginación y recorridos. Los archivos de ejemplo del framework no cuentan como evidencia de requisitos. La suite debe verificar además el caso de préstamo de dos líneas cuando la segunda no tiene stock: ningún descuento ni cabecera parcial.
+
+B11 incorpora `CatalogHttpTest`, `LoanHttpTest`, `HttpBoundaryTest` y `CoverHttpTest`: flujo HTTP contra PostgreSQL, las 19 operaciones privadas sin token, permisos admin, inventario exacto de 21 operaciones, fechas/estados/páginas, errores 413/500 y registro saneado, origen CORS fijo y PUT multipart en un proceso PHP independiente. Las pruebas limpian sus registros y fotos. Los administradores son fixtures, por lo que no sustituyen T-17.
 
 ## Verificaciones integradas
 

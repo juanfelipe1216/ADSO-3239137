@@ -20,6 +20,9 @@ Route::middleware(Access::class)->group(function () {
     Route::get('/researchers/{id}', [ResearcherController::class, 'get']);
     Route::post('/researchers', [ResearcherController::class, 'create']);
     Route::post('/loans', [LoanController::class, 'lend']);
+    Route::get('/loans', [LoanController::class, 'search']);
+    Route::get('/loans/overdue', [LoanController::class, 'overdue']);
+    Route::get('/loans/{id}', [LoanController::class, 'get']);
     Route::post('/loans/{loanId}/items/{itemId}/return', [LoanController::class, 'returnItem']);
 });
 Route::middleware(Access::class . ':admin')->group(function () {

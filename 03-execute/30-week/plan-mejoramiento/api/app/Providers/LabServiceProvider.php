@@ -41,6 +41,7 @@ final class LabServiceProvider extends ServiceProvider
         $this->app->singleton(TransactionManager::class, fn ($app) => new PostgresTransactionManager($app['db']->connection()));
         $this->app->singleton(PostgresLoanRepository::class, fn ($app) => new PostgresLoanRepository($app['db']->connection()));
         $this->app->alias(PostgresLoanRepository::class, LoanRepository::class);
+        $this->app->alias(PostgresLoanRepository::class, \Lab\Application\Ports\LoanReader::class);
         $this->app->alias(PostgresLoanRepository::class, OverdueReader::class);
         $this->app->singleton(UserRepository::class, fn ($app) => new PostgresUserRepository($app['db']->connection()));
         $this->app->singleton(ResearcherRepository::class, fn ($app) => new PostgresResearcherRepository($app['db']->connection()));

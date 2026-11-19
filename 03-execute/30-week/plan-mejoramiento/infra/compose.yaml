@@ -23,6 +23,7 @@ services:
     environment:
       APP_ENV: local
       APP_DEBUG: "false"
+      CORS_ORIGIN: ${CORS_ORIGIN:-}
       JWT_SECRET: ${JWT_SECRET:-}
       COVERS_DIR: /app/storage/covers
       DB_HOST: db

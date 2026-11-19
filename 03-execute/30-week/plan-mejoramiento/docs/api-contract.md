@@ -1,6 +1,6 @@
 # Contrato HTTP de lab-equipment
 
-Contrato objetivo. Al 18 de noviembre están implementadas y probadas salud, alta de préstamo y devolución por línea. Las otras 18 operaciones quedan para completar T-16. Base única `/api/v1`; las rutas de la tabla son relativas a ella. Salud significa `/api/v1/health`: no se añade un alias `/up` ni una segunda ruta pública de negocio. JSON UTF-8, nombres `snake_case`, UUID v4 y fechas ISO 8601 UTC terminadas en `Z`.
+Contrato implementado y probado al 18 de noviembre: las 21 operaciones están conectadas con adaptadores reales. La evidencia está en [B11](evidence/2026-11-18-http-contract.md). El admin usado por las pruebas es una fixture; el aprovisionamiento inicial desde entorno corresponde a T-17. Base única `/api/v1`; las rutas de la tabla son relativas a ella. Salud significa `/api/v1/health`: no se añade un alias `/up` ni una segunda ruta pública de negocio. JSON UTF-8, nombres `snake_case`, UUID v4 y fechas ISO 8601 UTC terminadas en `Z`.
 
 ## Convenciones
 

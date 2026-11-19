@@ -14,6 +14,28 @@ use Lab\Domain\DomainViolation;
 
 final class LoanController
 {
+    public function search(Request $request, \Lab\Application\Services\SearchLoansService $service): JsonResponse
+    {
+        $q = Input::query($request, ['from', 'to', 'status', 'researcher_id', 'page', 'size']);
+        return response()->json($service->execute(
+            isset($q['from']) ? Input::text($q['from']) : null,
+            isset($q['to']) ? Input::text($q['to']) : null,
+            isset($q['status']) ? Input::text($q['status']) : null,
+            isset($q['researcher_id']) ? Input::uuid($q['researcher_id']) : null,
+            Input::integer($q['page'] ?? 1, true), Input::integer($q['size'] ?? 20, true)));
+    }
+
+    public function get(Request $request, string $id, \Lab\Application\Services\GetLoanService $service): JsonResponse
+    {
+        Input::query($request);
+        return response()->json($service->execute(Input::uuid($id)));
+    }
+
+    public function overdue(Request $request, \Lab\Application\Services\ListOverdueService $service): JsonResponse
+    {
+        Input::query($request);
+        return response()->json($service->execute());
+    }
     private function uuid(mixed $value): string
     {
         if (!is_string($value) || !Str::isUuid($value, 4)) {

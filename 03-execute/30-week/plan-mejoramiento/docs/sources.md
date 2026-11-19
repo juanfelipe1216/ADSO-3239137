@@ -24,7 +24,7 @@ Se compararon los dos specs de referencia: contrato, modelo, historias y ADR coi
 
 ## Pendiente de evidencia
 
-- Ninguna de las 23 tareas del producto se ha probado todavía.
+- Actualización del 18 de noviembre: 17/23 tareas verificadas. El estado vigente y sus límites se consultan en [tasks.md](tasks.md); el catálogo de fuentes anterior conserva el corte del 12.
 - Las decisiones de referencia/fabricante y el reloj aislado son precisiones de diseño de este proyecto, señaladas en ADR; no texto literal del instructor.
 - La revisión del código anterior no se sustituyó por las afirmaciones de su README: se contrastó el informe con sus documentos, sin volver a ejecutar aquel sistema.
 - El reporte del proyecto formativo es histórico. Falta comprobar el estado vigente del equipo y resolver las brechas reales para la segunda revisión obligatoria.
