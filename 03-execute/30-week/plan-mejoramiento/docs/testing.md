@@ -61,3 +61,5 @@ B11 incorpora `CatalogHttpTest`, `LoanHttpTest`, `HttpBoundaryTest` y `CoverHttp
 - [ ] El aprendiz puede ejecutar, explicar decisiones y hacer un cambio en vivo.
 
 No se garantiza una calificación a partir de esta lista; la evaluación corresponde al instructor. No se afirmará que un trabajo es original por cambiar nombres: el diseño debe responder al dominio, y las decisiones y pruebas deben poder explicarse.
+
+El 19 de noviembre B13 añade cinco pruebas React/cliente HTTP en dos archivos (npm test desde app), compilación de producción y node tool/verify-compose.mjs desde la raíz. Esta última levanta un proyecto Compose temporal con volúmenes nuevos, comprueba frontend, API, login y categorías, reinicia y repite; luego elimina exclusivamente los recursos temporales. Requiere Node 24, Docker Compose compatible con !reset/!override y puerto 8082 libre (configurable con VERIFY_APP_PORT).

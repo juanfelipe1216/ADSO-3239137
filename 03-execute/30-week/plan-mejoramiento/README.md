@@ -4,9 +4,9 @@ Este proyecto es la solución del plan de mejoramiento del aprendiz A03, ficha 3
 
 Aplicación para administrar equipos, investigadores, préstamos y devoluciones de un laboratorio. El producto tendrá React, una API Laravel y PostgreSQL 16. Los operadores serán administradores y laboratoristas; los investigadores no tendrán acceso al sistema.
 
-## Estado del 18 de noviembre de 2026
+## Estado del 19 de noviembre de 2026
 
-Laravel y PostgreSQL arrancan en contenedores. Se verificaron 19 de las 23 tareas (T-01 a T-19). Las 21 operaciones están conectadas y probadas: login, usuarios, catálogo/fotos, investigadores, préstamos, devolución, vencidos y reporte. La suite pasa con 328 casos y 1.682 aserciones en 41 archivos, incluidas carreras HTTP contra PostgreSQL y carga multipart real. B12 aprovisiona el administrador desde entorno y verifica el arranque repetido en una base vacía. React y el cierre del producto siguen pendientes. Véase la [evidencia B11](docs/evidence/2026-11-18-http-contract.md).
+Laravel y PostgreSQL arrancan en contenedores. Se verificaron 20 de las 23 tareas (T-01 a T-20). Las 21 operaciones están conectadas y probadas: login, usuarios, catálogo/fotos, investigadores, préstamos, devolución, vencidos y reporte. La suite pasa con 328 casos y 1.682 aserciones en 41 archivos, incluidas carreras HTTP contra PostgreSQL y carga multipart real. B12 aprovisiona el administrador desde entorno y verifica el arranque repetido en una base vacía. La base React y el arranque conjunto están verificados en B13. Los flujos completos de React, sembrador y página siguen pendientes. Véase la [evidencia B11](docs/evidence/2026-11-18-http-contract.md).
 
 El primer avance documental corresponde al 12 de noviembre. El usuario confirmó que el 13 no hubo avances: entre el 12 y el 19 quedan como máximo siete fechas reales de actividad. El requisito de ocho días queda pendiente de aclaración con la instructora; no se alterarán fechas ni se usarán commits de sincronización del curso para aparentar avances.
 
@@ -47,8 +47,8 @@ La aprobación exige promedio de al menos 70 % en los siete informes, ninguno me
 Desde esta carpeta, con Docker Desktop funcionando, copiar `.env.example` a `.env` y asignar una contraseña local aleatoria a `DB_PASSWORD` y un secreto aleatorio independiente de al menos 32 bytes a `JWT_SECRET`. Configurar también `ADMIN_USERNAME` y `ADMIN_PASSWORD` (12-128 caracteres). No subir `.env`. Después:
 
 ```sh
-docker compose --env-file .env -f infra/compose.yaml up --build -d
+docker compose --env-file .env -f infra/compose.yaml up --build -d --wait
 docker compose --env-file .env -f infra/compose.yaml exec -T api composer test
 ```
 
-La salud responde en `http://127.0.0.1:8081/api/v1/health`. Este arranque incluye API y PostgreSQL con migración automática; el frontend sigue pendiente de T-20. La contraseña local de la base se recibe de `.env`. `CORS_ORIGIN` admite un único origen de frontend; vacío no habilita acceso desde otro origen. No publicar secretos ni usar el servidor HTTP local como despliegue remoto.
+La salud responde en `http://127.0.0.1:8081/api/v1/health`. Este arranque incluye PostgreSQL, API con migración/admin y frontend React en http://127.0.0.1:8080. La contraseña local de la base se recibe de `.env`. `CORS_ORIGIN` admite un único origen de frontend; vacío no habilita acceso desde otro origen. No publicar secretos ni usar el servidor HTTP local como despliegue remoto.

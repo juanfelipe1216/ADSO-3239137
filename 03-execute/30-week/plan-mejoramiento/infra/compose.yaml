@@ -1,7 +1,7 @@
 name: lab-equipment-a03
 services:
   db:
-    image: postgres:16
+    image: postgres:16@sha256:5a65324fe84dc41709ff914e90b07f3e2f577073ed27bf917d4873aca0c9ec51
     environment:
       POSTGRES_DB: lab_equipment
       POSTGRES_USER: lab_app
@@ -40,6 +40,20 @@ services:
     command: ["sh", "-c", "php artisan migrate --force && php artisan lab:bootstrap-admin && exec env PHP_CLI_SERVER_WORKERS=2 php artisan serve --no-reload --host=0.0.0.0 --port=8000"]
     healthcheck:
       test: ["CMD", "php", "-r", "exit(file_get_contents('http://127.0.0.1:8000/api/v1/health') === '{\"status\":\"ok\"}' ? 0 : 1);"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+  app:
+    build:
+      context: ..
+      dockerfile: infra/app.Dockerfile
+    ports:
+      - "127.0.0.1:${APP_PORT:-8080}:80"
+    depends_on:
+      api:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://127.0.0.1/"]
       interval: 10s
       timeout: 3s
       retries: 5

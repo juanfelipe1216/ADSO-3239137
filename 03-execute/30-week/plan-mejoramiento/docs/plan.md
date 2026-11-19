@@ -34,3 +34,5 @@ Laravel 12 mantiene soporte de seguridad durante las fechas del plan según sus 
 6. Cerrar las 23 tareas con resultados reproducibles, comprobar los cinco RNF, hacer el recorrido desde base vacía y ensayar la sustentación.
 
 No se acepta una ruta simulada, un test de ejemplo o una lista de tareas marcada como sustituto de evidencia. Cada cierre requiere prueba, comando, resultado, fecha real y commit. No se prometen resultados antes de ejecutarlos.
+
+Actualización B13, 19 de noviembre: React 19.3.1/Vite 8.3.8 con package-lock.json, Nginx sirve el build y hace proxy de /api al servicio API. Las imágenes se fijan por digest. T-20 verifica el arranque conjunto y reinicio con volúmenes nuevos; T-22 sigue pendiente de flujos operativos completos.
