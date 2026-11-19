@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { request } from '../api.js';
 import { ErrorNote } from '../ui.jsx';
 
-// Selector con búsqueda en el servidor: sirve con más de 50 registros porque nunca carga todo el catálogo.
+// Server-side search picker: works with more than 50 records because it never loads the whole list.
 export default function SearchPicker({ id, label, path, token, describe, isDisabled, onPick }) {
   const [text, setText] = useState('');
   const [results, setResults] = useState([]);

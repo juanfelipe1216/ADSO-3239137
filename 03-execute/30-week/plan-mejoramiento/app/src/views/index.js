@@ -5,7 +5,7 @@ import Overdue from './Overdue.jsx';
 import Report from './Report.jsx';
 import Staff from './Staff.jsx';
 
-// Cada vista recibe { token, role } y es dueña de sus llamadas a /api/v1.
+// Each view receives { token, role } and owns its own calls to /api/v1.
 const BOTH = ['admin', 'lab_technician'];
 export const VIEWS = [
   { id: 'catalog', label: 'Catálogo', roles: BOTH, Component: Catalog },

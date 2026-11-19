@@ -1,6 +1,6 @@
 import React from 'react';
 
-// Piezas compartidas por todas las vistas (carga, vacío, error y paginación).
+// Shared building blocks for every view: loading, empty, error and pagination.
 
 export function Loading({ children = 'Cargando…' }) {
   return <p className="state" role="status">{children}</p>;
