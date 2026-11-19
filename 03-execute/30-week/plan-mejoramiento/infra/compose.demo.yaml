@@ -1,0 +1,14 @@
+services:
+  api:
+    environment:
+      APP_ENV: testing
+      DEMO_CLOCK_FILE: /demo-clock/clock.txt
+    volumes:
+      - type: bind
+        source: ${DEMO_CLOCK_DIR:?Define DEMO_CLOCK_DIR para la instancia aislada}
+        target: /demo-clock
+        read_only: true
+    ports: !reset []
+  app:
+    ports: !override
+      - "127.0.0.1:${DEMO_APP_PORT:-8083}:80"

@@ -1,6 +1,6 @@
 # Tareas y trazabilidad
 
-**Estado al 19 de noviembre: 20/23 tareas verificadas.** T-01 a T-20 tienen evidencia. T-13 comprueba persistencia y carreras por HTTP en PostgreSQL. T-15 verifica multipart real y T-16 las 21 operaciones, roles y errores; [evidencia B11](evidence/2026-11-18-http-contract.md). T-17 y T-19 verificadas en B12: base vacía, reinicio, login y detectores arquitectónicos.
+**Estado al 19 de noviembre: 21/23 tareas verificadas.** T-01 a T-21 tienen evidencia. T-13 comprueba persistencia y carreras por HTTP en PostgreSQL. T-15 verifica multipart real y T-16 las 21 operaciones, roles y errores; [evidencia B11](evidence/2026-11-18-http-contract.md). T-17 y T-19 verificadas en B12: base vacía, reinicio, login y detectores arquitectónicos.
 
 | ID | Tarea adaptada | Depende de | Requisito / evidencia de cierre | Objetivo | Estado |
 |---|---|---|---|---|---|
@@ -24,7 +24,7 @@
 | T-18 | CHECK de total positivo y rol en motor | T-02 | SQL inválido rechazado; modelo actualizado tras comprobarlo | 16 | Verificada el 16 en PostgreSQL |
 | T-19 | Pruebas de dependencia y composición | T-17 | Artículos I-III; prueba falla al introducir dependencia prohibida | 16 | Verificada el 18: dependencias del núcleo y composición con mutaciones de prueba |
 | T-20 | Compose con db, api y app | T-17 | RNF-5: un comando tras configurar entorno; DDL solo en API | 16 | Verificada el 19: db/api/app saludables, volumen nuevo y reinicio por HTTP |
-| T-21 | Sembrador HTTP | T-17 | >=40 equipos, >=10 investigadores, >=15 préstamos, exactamente 3 líneas vencidas; restauración de reloj | 16 | Pendiente |
+| T-21 | Sembrador HTTP | T-17 | >=40 equipos, >=10 investigadores, >=15 préstamos, exactamente 3 líneas vencidas; restauración de reloj | 16 | Verificada el 19: 40/10/15, tres vencidos, reporte y restauración tras fallo |
 | T-22 | React con todos los flujos | T-16 | Login, usuarios admin, catálogo/fotos, investigadores, préstamos, devolución, vencidos y reporte; estados vacíos/error | 16 | Pendiente |
 | T-23 | Página pública de producto | - | Sin API; escritorio y 375 px; reglas/roles/vencidos, sin credenciales ni jerga del examen | 16 | Pendiente |
 

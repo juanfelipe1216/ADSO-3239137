@@ -1,6 +1,6 @@
 # Estrategia de pruebas y entrega
 
-Inventario de cobertura objetivo. Al 18 de noviembre existen **41 archivos con 328 casos y 1.682 aserciones aprobadas**; cada cierre comprobado está en [tasks.md](tasks.md) y `evidence/`. La tabla incluye pruebas implementadas y otras pendientes, y sus nombres previstos no sustituyen la evidencia real. El mínimo del acta es 15 archivos; se proponen comportamientos diferentes, sin subdividir aserciones artificialmente.
+Inventario de cobertura objetivo. Al 19 de noviembre existen **42 archivos con 331 casos y 1.690 aserciones aprobadas**; cada cierre comprobado está en [tasks.md](tasks.md) y `evidence/`. La tabla incluye pruebas implementadas y otras pendientes, y sus nombres previstos no sustituyen la evidencia real. El mínimo del acta es 15 archivos; se proponen comportamientos diferentes, sin subdividir aserciones artificialmente.
 
 | Archivo previsto | Qué debe demostrar |
 |---|---|
@@ -63,3 +63,5 @@ B11 incorpora `CatalogHttpTest`, `LoanHttpTest`, `HttpBoundaryTest` y `CoverHttp
 No se garantiza una calificación a partir de esta lista; la evaluación corresponde al instructor. No se afirmará que un trabajo es original por cambiar nombres: el diseño debe responder al dominio, y las decisiones y pruebas deben poder explicarse.
 
 El 19 de noviembre B13 añade cinco pruebas React/cliente HTTP en dos archivos (npm test desde app), compilación de producción y node tool/verify-compose.mjs desde la raíz. Esta última levanta un proyecto Compose temporal con volúmenes nuevos, comprueba frontend, API, login y categorías, reinicia y repite; luego elimina exclusivamente los recursos temporales. Requiere Node 24, Docker Compose compatible con !reset/!override y puerto 8082 libre (configurable con VERIFY_APP_PORT).
+
+B14: node --test tool/clock-scope.test.mjs verifica restauración ante éxito y fallo. node tool/run-demo.mjs seed comprueba 40 equipos, 10 investigadores, 15 préstamos, tres vencidos y reporte de 15 solicitudes. node tool/run-demo.mjs performance crea 5.000 equipos por API y mide 168 búsquedas: p50 65,40 ms, p95 85,20 ms, máximo 142,81 ms y cero errores. Las muestras completas y limitaciones están en evidence/2026-11-19-seed-performance.md.

@@ -1,0 +1,1024 @@
+{
+  "mode": "performance",
+  "executed_at": "2026-11-19T15:32:27.104Z",
+  "platform": "win32",
+  "node": "v24.18.0",
+  "transport": "HTTP loopback through Nginx, four sequential data writers, serial search requests",
+  "equipment": 5000,
+  "samples": [
+    {
+      "phase": "cold",
+      "query": "",
+      "ms": 142.80629999999655,
+      "ok": true
+    },
+    {
+      "phase": "cold",
+      "query": "?q=000",
+      "ms": 85.19510000001173,
+      "ok": true
+    },
+    {
+      "phase": "cold",
+      "query": "?q=Fabricante",
+      "ms": 84.86470000000554,
+      "ok": true
+    },
+    {
+      "phase": "cold",
+      "query": "?q=no-existe",
+      "ms": 83.6591999999946,
+      "ok": true
+    },
+    {
+      "phase": "cold",
+      "query": "?category_id=33333333-3333-4333-8333-333333333333",
+      "ms": 71.37810000000172,
+      "ok": true
+    },
+    {
+      "phase": "cold",
+      "query": "?q=Equipo&category_id=11111111-1111-4111-8111-111111111111",
+      "ms": 55.0850999999966,
+      "ok": true
+    },
+    {
+      "phase": "cold",
+      "query": "?page=100&size=50",
+      "ms": 80.80669999998645,
+      "ok": true
+    },
+    {
+      "phase": "cold",
+      "query": "?page=101&size=50",
+      "ms": 73.47609999999986,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "",
+      "ms": 64.28329999998095,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?q=000",
+      "ms": 63.07149999999092,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?q=Fabricante",
+      "ms": 97.63280000002123,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?q=no-existe",
+      "ms": 58.23550000000978,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?category_id=33333333-3333-4333-8333-333333333333",
+      "ms": 68.49220000000787,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?q=Equipo&category_id=11111111-1111-4111-8111-111111111111",
+      "ms": 65.48970000000554,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?page=100&size=50",
+      "ms": 90.44630000001052,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?page=101&size=50",
+      "ms": 73.88870000001043,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "",
+      "ms": 73.00390000001062,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?q=000",
+      "ms": 55.952399999980116,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?q=Fabricante",
+      "ms": 76.60940000001574,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?q=no-existe",
+      "ms": 58.72930000000633,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?category_id=33333333-3333-4333-8333-333333333333",
+      "ms": 59.241299999994226,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?q=Equipo&category_id=11111111-1111-4111-8111-111111111111",
+      "ms": 65.0341999999946,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?page=100&size=50",
+      "ms": 80.66779999999562,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?page=101&size=50",
+      "ms": 68.74749999999767,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "",
+      "ms": 80.65869999999995,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?q=000",
+      "ms": 67.29680000001099,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?q=Fabricante",
+      "ms": 73.70799999998417,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?q=no-existe",
+      "ms": 59.359499999991385,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?category_id=33333333-3333-4333-8333-333333333333",
+      "ms": 58.249599999981,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?q=Equipo&category_id=11111111-1111-4111-8111-111111111111",
+      "ms": 51.26189999998314,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?page=100&size=50",
+      "ms": 77.45230000000447,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?page=101&size=50",
+      "ms": 77.93539999998757,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "",
+      "ms": 70.79529999999795,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?q=000",
+      "ms": 73.03469999998924,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?q=Fabricante",
+      "ms": 71.61280000000261,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?q=no-existe",
+      "ms": 59.82880000001751,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?category_id=33333333-3333-4333-8333-333333333333",
+      "ms": 58.899099999980535,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?q=Equipo&category_id=11111111-1111-4111-8111-111111111111",
+      "ms": 64.26000000000931,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?page=100&size=50",
+      "ms": 71.3122999999905,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?page=101&size=50",
+      "ms": 86.18290000001434,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "",
+      "ms": 71.60050000000047,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?q=000",
+      "ms": 62.92450000002282,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?q=Fabricante",
+      "ms": 75.34049999999115,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?q=no-existe",
+      "ms": 63.89220000000205,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?category_id=33333333-3333-4333-8333-333333333333",
+      "ms": 59.32029999999213,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?q=Equipo&category_id=11111111-1111-4111-8111-111111111111",
+      "ms": 62.60940000001574,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?page=100&size=50",
+      "ms": 91.37380000000121,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?page=101&size=50",
+      "ms": 69.82210000001942,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "",
+      "ms": 62.383800000010524,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?q=000",
+      "ms": 46.595999999990454,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?q=Fabricante",
+      "ms": 83.6598000000231,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?q=no-existe",
+      "ms": 50.00380000000587,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?category_id=33333333-3333-4333-8333-333333333333",
+      "ms": 48.62020000000484,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?q=Equipo&category_id=11111111-1111-4111-8111-111111111111",
+      "ms": 46.74580000000424,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?page=100&size=50",
+      "ms": 73.55540000001201,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?page=101&size=50",
+      "ms": 83.89220000000205,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "",
+      "ms": 94.19830000001821,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?q=000",
+      "ms": 65.94500000000698,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?q=Fabricante",
+      "ms": 62.70490000001155,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?q=no-existe",
+      "ms": 33.835599999991246,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?category_id=33333333-3333-4333-8333-333333333333",
+      "ms": 52.11850000001141,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?q=Equipo&category_id=11111111-1111-4111-8111-111111111111",
+      "ms": 49.72040000002016,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?page=100&size=50",
+      "ms": 88.09959999998682,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?page=101&size=50",
+      "ms": 73.87340000001132,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "",
+      "ms": 69.04379999998491,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?q=000",
+      "ms": 68.04170000000158,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?q=Fabricante",
+      "ms": 64.89600000000792,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?q=no-existe",
+      "ms": 51.834499999997206,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?category_id=33333333-3333-4333-8333-333333333333",
+      "ms": 60.48029999999562,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?q=Equipo&category_id=11111111-1111-4111-8111-111111111111",
+      "ms": 63.46840000001248,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?page=100&size=50",
+      "ms": 78.19069999997737,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?page=101&size=50",
+      "ms": 51.27739999999176,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "",
+      "ms": 48.08269999999902,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?q=000",
+      "ms": 48.54219999999623,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?q=Fabricante",
+      "ms": 72.79949999999371,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?q=no-existe",
+      "ms": 63.88409999999567,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?category_id=33333333-3333-4333-8333-333333333333",
+      "ms": 61.012100000021746,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?q=Equipo&category_id=11111111-1111-4111-8111-111111111111",
+      "ms": 52.03369999999995,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?page=100&size=50",
+      "ms": 64.52390000000014,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?page=101&size=50",
+      "ms": 72.3071999999811,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "",
+      "ms": 54.889100000000326,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?q=000",
+      "ms": 61.86160000000382,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?q=Fabricante",
+      "ms": 77.53090000001248,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?q=no-existe",
+      "ms": 65.40009999999893,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?category_id=33333333-3333-4333-8333-333333333333",
+      "ms": 50.28290000002016,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?q=Equipo&category_id=11111111-1111-4111-8111-111111111111",
+      "ms": 40.671799999981886,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?page=100&size=50",
+      "ms": 79.50989999997546,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?page=101&size=50",
+      "ms": 73.1085000000021,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "",
+      "ms": 72.72329999998328,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?q=000",
+      "ms": 46.59040000001551,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?q=Fabricante",
+      "ms": 67.07019999998738,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?q=no-existe",
+      "ms": 63.01190000001225,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?category_id=33333333-3333-4333-8333-333333333333",
+      "ms": 62.33830000000307,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?q=Equipo&category_id=11111111-1111-4111-8111-111111111111",
+      "ms": 66.95709999999963,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?page=100&size=50",
+      "ms": 69.18779999998515,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?page=101&size=50",
+      "ms": 73.01430000000983,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "",
+      "ms": 82.10610000000452,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?q=000",
+      "ms": 63.59899999998743,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?q=Fabricante",
+      "ms": 74.2326999999932,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?q=no-existe",
+      "ms": 60.640500000008615,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?category_id=33333333-3333-4333-8333-333333333333",
+      "ms": 61.44860000000335,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?q=Equipo&category_id=11111111-1111-4111-8111-111111111111",
+      "ms": 62.42180000001099,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?page=100&size=50",
+      "ms": 87.17979999998352,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?page=101&size=50",
+      "ms": 67.99900000001071,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "",
+      "ms": 78.9543999999878,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?q=000",
+      "ms": 56.068599999998696,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?q=Fabricante",
+      "ms": 57.96170000001439,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?q=no-existe",
+      "ms": 45.27499999999418,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?category_id=33333333-3333-4333-8333-333333333333",
+      "ms": 46.93319999999949,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?q=Equipo&category_id=11111111-1111-4111-8111-111111111111",
+      "ms": 46.05580000000191,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?page=100&size=50",
+      "ms": 67.58030000000144,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?page=101&size=50",
+      "ms": 74.28220000001602,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "",
+      "ms": 60.77779999998165,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?q=000",
+      "ms": 51.12879999997676,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?q=Fabricante",
+      "ms": 84.55920000001788,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?q=no-existe",
+      "ms": 52.046000000002095,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?category_id=33333333-3333-4333-8333-333333333333",
+      "ms": 61.000399999989895,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?q=Equipo&category_id=11111111-1111-4111-8111-111111111111",
+      "ms": 64.41139999998268,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?page=100&size=50",
+      "ms": 82.02500000002328,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?page=101&size=50",
+      "ms": 52.531099999992875,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "",
+      "ms": 66.66930000000866,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?q=000",
+      "ms": 67.6192999999912,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?q=Fabricante",
+      "ms": 67.46909999998752,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?q=no-existe",
+      "ms": 66.72070000000531,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?category_id=33333333-3333-4333-8333-333333333333",
+      "ms": 47.116299999994226,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?q=Equipo&category_id=11111111-1111-4111-8111-111111111111",
+      "ms": 60.365200000000186,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?page=100&size=50",
+      "ms": 76.01879999999073,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?page=101&size=50",
+      "ms": 75.35999999998603,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "",
+      "ms": 77.89900000000489,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?q=000",
+      "ms": 63.49700000000303,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?q=Fabricante",
+      "ms": 79.47389999998268,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?q=no-existe",
+      "ms": 67.13730000000214,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?category_id=33333333-3333-4333-8333-333333333333",
+      "ms": 40.13789999997243,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?q=Equipo&category_id=11111111-1111-4111-8111-111111111111",
+      "ms": 39.4149000000034,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?page=100&size=50",
+      "ms": 54.59799999999814,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?page=101&size=50",
+      "ms": 67.71630000000005,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "",
+      "ms": 62.666199999977835,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?q=000",
+      "ms": 71.95410000000265,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?q=Fabricante",
+      "ms": 70.2556999999797,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?q=no-existe",
+      "ms": 47.54399999999441,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?category_id=33333333-3333-4333-8333-333333333333",
+      "ms": 56.90469999998459,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?q=Equipo&category_id=11111111-1111-4111-8111-111111111111",
+      "ms": 49.08379999999306,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?page=100&size=50",
+      "ms": 84.21429999999236,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?page=101&size=50",
+      "ms": 69.88969999999972,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "",
+      "ms": 70.26090000002296,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?q=000",
+      "ms": 47.63259999998263,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?q=Fabricante",
+      "ms": 68.15419999998994,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?q=no-existe",
+      "ms": 68.61139999999432,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?category_id=33333333-3333-4333-8333-333333333333",
+      "ms": 54.55139999999665,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?q=Equipo&category_id=11111111-1111-4111-8111-111111111111",
+      "ms": 56.73610000000917,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?page=100&size=50",
+      "ms": 76.34760000000824,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?page=101&size=50",
+      "ms": 64.59219999998459,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "",
+      "ms": 57.05999999999767,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?q=000",
+      "ms": 50.57709999999497,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?q=Fabricante",
+      "ms": 70.38420000000042,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?q=no-existe",
+      "ms": 61.236999999993714,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?category_id=33333333-3333-4333-8333-333333333333",
+      "ms": 62.77139999999781,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?q=Equipo&category_id=11111111-1111-4111-8111-111111111111",
+      "ms": 56.49439999999595,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?page=100&size=50",
+      "ms": 81.96719999998459,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?page=101&size=50",
+      "ms": 74.94659999999567,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "",
+      "ms": 80.14900000000489,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?q=000",
+      "ms": 60.90810000000056,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?q=Fabricante",
+      "ms": 69.5564000000013,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?q=no-existe",
+      "ms": 76.29760000001988,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?category_id=33333333-3333-4333-8333-333333333333",
+      "ms": 62.994000000006054,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?q=Equipo&category_id=11111111-1111-4111-8111-111111111111",
+      "ms": 61.900699999998324,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?page=100&size=50",
+      "ms": 78.51270000002114,
+      "ok": true
+    },
+    {
+      "phase": "warm",
+      "query": "?page=101&size=50",
+      "ms": 61.22269999998389,
+      "ok": true
+    }
+  ],
+  "count": 168,
+  "p50_ms": 65.40009999999893,
+  "p95_ms": 85.19510000001173,
+  "max_ms": 142.80629999999655,
+  "errors": 0,
+  "passed": true
+}

@@ -1,0 +1,14 @@
+{
+  "mode": "seed",
+  "executed_at": "2026-11-19T15:29:41.004Z",
+  "platform": "win32",
+  "node": "v24.18.0",
+  "transport": "HTTP loopback through Nginx, four sequential data writers, serial search requests",
+  "equipment": 40,
+  "researchers": 10,
+  "loans": 15,
+  "overdue": 3,
+  "report_rows": 15,
+  "clock_restored": true,
+  "injected_failure_restored": true
+}
