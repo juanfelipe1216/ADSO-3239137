@@ -1,6 +1,6 @@
 # Tareas y trazabilidad
 
-**Estado al 19 de noviembre: 22/23 tareas verificadas.** T-01 a T-22 tienen evidencia. T-13 comprueba persistencia y carreras por HTTP en PostgreSQL. T-15 verifica multipart real y T-16 las 21 operaciones, roles y errores; [evidencia B11](evidence/2026-11-18-http-contract.md). T-17 y T-19 verificadas en B12: base vacía, reinicio, login y detectores arquitectónicos.
+**Estado al 19 de noviembre: 23/23 tareas con evidencia propia.** T-01 a T-23 tienen evidencia; la auditoría final de B18 sigue pendiente. T-13 comprueba persistencia y carreras por HTTP en PostgreSQL. T-15 verifica multipart real y T-16 las 21 operaciones, roles y errores; [evidencia B11](evidence/2026-11-18-http-contract.md). T-17 y T-19 verificadas en B12: base vacía, reinicio, login y detectores arquitectónicos.
 
 | ID | Tarea adaptada | Depende de | Requisito / evidencia de cierre | Objetivo | Estado |
 |---|---|---|---|---|---|
@@ -26,7 +26,7 @@
 | T-20 | Compose con db, api y app | T-17 | RNF-5: un comando tras configurar entorno; DDL solo en API | 16 | Verificada el 19: db/api/app saludables, volumen nuevo y reinicio por HTTP |
 | T-21 | Sembrador HTTP | T-17 | >=40 equipos, >=10 investigadores, >=15 préstamos, exactamente 3 líneas vencidas; restauración de reloj | 16 | Verificada el 19: 40/10/15, tres vencidos, reporte y restauración tras fallo |
 | T-22 | React con todos los flujos | T-16 | Login, usuarios admin, catálogo/fotos, investigadores, préstamos, devolución, vencidos y reporte; estados vacíos/error | 16 | Verificada el 19: 31 pruebas React y recorrido real aislado; [evidencia](evidence/2026-11-19-react-flows.md) |
-| T-23 | Página pública de producto | - | Sin API; escritorio y 375 px; reglas/roles/vencidos, sin credenciales ni jerga del examen | 16 | Pendiente |
+| T-23 | Página pública de producto | - | Sin API; escritorio y 375 px; reglas/roles/vencidos, sin credenciales ni jerga del examen | 16 | Verificada el 19: [evidencia](evidence/2026-11-19-public-page.md) |
 
 La línea base reservaba el 17 a verificación transversal, pero el atraso exige continuar desarrollo ese día según [remaining-blocks.md](remaining-blocks.md). El cierre aún requiere las 23 tareas, RNF-1 (5.000 equipos / 300 ms), al menos 15 archivos significativos de pruebas y congruencia entre producto y documentos. No se añaden tareas T-24 ficticias ni se omiten T-18 a T-23 por considerarlas opcionales.
 

@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Préstamo de equipos de laboratorio</title>
+  <meta name="description" content="Un solo lugar para saber qué equipos hay en el laboratorio, quién los tiene y cuándo deben volver.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#content">Ir al contenido</a>
+  <header class="site-header">
+    <div class="container header-row">
+      <span class="brand"><span class="brand-mark" aria-hidden="true">L</span>Laboratorio</span>
+      <nav aria-label="Secciones de la página">
+        <a href="#how">Cómo funciona</a>
+        <a href="#catalog">Equipos</a>
+        <a href="#rules">Reglas</a>
+        <a href="#roles">Quién hace qué</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="content">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow">Equipos de laboratorio, siempre a la vista</p>
+          <h1>Cada equipo, en manos de quien lo necesita y de vuelta a tiempo.</h1>
+          <p class="lead">Una herramienta para el personal del laboratorio: sabe qué hay disponible, quién se llevó cada equipo y cuándo debe regresar, sin hojas de cálculo ni libretas.</p>
+          <ul class="hero-facts" aria-label="Datos clave">
+            <li><strong>2</strong><span>equipos como máximo por investigador</span></li>
+            <li><strong>5</strong><span>días para cada préstamo</span></li>
+            <li><strong>1</strong><span>devolución registrada por equipo</span></li>
+          </ul>
+        </div>
+        <figure class="hero-card" aria-label="Ejemplo de un préstamo">
+          <figcaption>Así se ve un préstamo</figcaption>
+          <div class="sample-loan">
+            <p class="sample-title">Multímetro digital <span class="tag">Electrónica</span></p>
+            <p class="sample-line"><span>Prestado</span><strong>Lunes</strong></p>
+            <p class="sample-line"><span>Debe volver</span><strong>Sábado</strong></p>
+            <p class="sample-line"><span>Unidades libres</span><strong>2 de 3</strong></p>
+          </div>
+          <p class="sample-note">Ejemplo ilustrativo, sin datos de personas reales.</p>
+        </figure>
+      </div>
+    </section>
+
+    <section id="how" class="section">
+      <div class="container">
+        <h2>Cómo funciona</h2>
+        <ol class="steps">
+          <li><h3>Se consulta el catálogo</h3><p>El personal busca por nombre, fabricante o categoría y ve cuántas unidades quedan libres.</p></li>
+          <li><h3>Se registra el préstamo</h3><p>Se elige al investigador y hasta dos equipos. El sistema descuenta una unidad por cada uno y fija el plazo de cinco días.</p></li>
+          <li><h3>Se registra la devolución</h3><p>Cada equipo se devuelve por separado. La unidad vuelve a estar disponible y el préstamo se cierra cuando regresan todos.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="catalog" class="section alt">
+      <div class="container">
+        <h2>Equipos organizados por categoría</h2>
+        <p class="section-lead">Cada equipo pertenece a una categoría y tiene un código de referencia propio, nombre, fabricante, unidades totales, unidades disponibles y, si se desea, una fotografía.</p>
+        <ul class="chips" aria-label="Categorías">
+          <li>Medición</li><li>Óptica</li><li>Electrónica</li><li>Química</li><li>Seguridad</li>
+        </ul>
+        <p class="section-lead">Los equipos que ya no se usan se dan de baja sin perder el historial de los préstamos anteriores.</p>
+      </div>
+    </section>
+
+    <section id="rules" class="section">
+      <div class="container">
+        <h2>Reglas claras para todos</h2>
+        <div class="cards">
+          <article class="card"><h3>Dos equipos por persona</h3><p>Un investigador puede tener pendientes, como máximo, dos equipos a la vez. Si pide más, el sistema le explica cuántos tiene ya.</p></article>
+          <article class="card"><h3>Cinco días de plazo</h3><p>Cada equipo debe volver cinco días después del préstamo. La fecha de vencimiento queda registrada desde el primer momento.</p></article>
+          <article class="card"><h3>Con vencidos, no hay préstamos nuevos</h3><p>Mientras un investigador tenga un equipo vencido sin devolver, no puede recibir otros. Así los equipos vuelven a circular.</p></article>
+          <article class="card"><h3>La última unidad no se presta dos veces</h3><p>Si dos personas piden la última unidad al mismo tiempo, solo una la recibe y la otra recibe un aviso claro.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="overdue" class="section alt">
+      <div class="container two-col">
+        <div>
+          <h2>Los vencidos, siempre a la vista</h2>
+          <p class="section-lead">Una lista aparte muestra cada equipo que debió volver, quién lo tiene y cuántos días de retraso lleva, ordenada del que venció primero al último.</p>
+        </div>
+        <div>
+          <h2>Un reporte para decidir</h2>
+          <p class="section-lead">Quien administra puede elegir un rango de fechas y ver qué equipos se prestaron más. El reporte conserva lo que decía cada préstamo en su momento, aunque después cambie el catálogo.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="roles" class="section">
+      <div class="container">
+        <h2>Quién hace qué</h2>
+        <div class="table-wrap">
+          <table>
+            <caption class="sr-only">Funciones de cada rol</caption>
+            <thead><tr><th scope="col">Función</th><th scope="col">Administrador</th><th scope="col">Laboratorista</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Consultar equipos</th><td>Sí</td><td>Sí</td></tr>
+              <tr><th scope="row">Crear, editar y dar de baja equipos, y gestionar fotografías</th><td>Sí</td><td>No</td></tr>
+              <tr><th scope="row">Registrar y buscar investigadores</th><td>Sí</td><td>Sí</td></tr>
+              <tr><th scope="row">Registrar préstamos y devoluciones</th><td>Sí</td><td>Sí</td></tr>
+              <tr><th scope="row">Consultar equipos vencidos</th><td>Sí</td><td>Sí</td></tr>
+              <tr><th scope="row">Ver el reporte de equipos más prestados</th><td>Sí</td><td>No</td></tr>
+              <tr><th scope="row">Dar de alta a laboratoristas</th><td>Sí</td><td>No</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="section-lead">Los investigadores no entran al sistema: sus datos los registra el personal del laboratorio.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>Préstamo responsable · Equipos disponibles para aprender.</p>
+      <p>El acceso es solo para administradores y laboratoristas con una cuenta del laboratorio.</p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -27,7 +27,7 @@ Los doce bloques del 17 **no caben en el horario original de 19:00 a 22:00**. Es
 | B13 | 17, tercer tramo | T-20: Compose y base React | Un comando levanta db/api/app; configuración documentada y sin secretos | Verificado el 19: base React, tres servicios y prueba aislada de reinicio |
 | B14 | 17, tercer tramo | T-21: sembrador API y RNF-1 | 40/10/15, tres líneas vencidas, restauración del reloj; búsqueda con 5.000 equipos y tiempos registrados | Verificado el 19: semilla 40/10/15, tres vencidos y 168 búsquedas; máximo 142,81 ms |
 | B15 | 17, tercer tramo | T-22: flujos React | Roles, catálogo, fotos, investigadores, préstamos, devolución, vencidos, reporte y errores | Verificado el 19: 31 pruebas React y recorrido real aislado; ver evidencia B15 |
-| B16 | 17, tercer tramo | T-23: página pública y cierre del producto | Sin API, escritorio/375 px, reglas/roles/vencidos; recorrido transversal y todas las tareas comprobadas | Pendiente |
+| B16 | 17, tercer tramo | T-23: página pública y cierre del producto | Sin API, escritorio/375 px, reglas/roles/vencidos; recorrido transversal y todas las tareas comprobadas | Página verificada el 19 (ver evidencia B16); el recorrido transversal final queda en B18 |
 | B17 | 18 | Revisión del proyecto formativo, obligatoria aparte | Evidencia de secciones 00-06 y congruencia; corregir brechas reales y señalar lo no resuelto | Pendiente |
 | B18 | 18 | Reproducción final y auditoría del plan | Instalación aislada, pruebas, idioma, secretos, documentación e historial por carpeta/fecha | Pendiente |
 
