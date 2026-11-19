@@ -8,6 +8,7 @@ use Lab\Application\DTOs\MostBorrowedRow;
 use Lab\Application\Ports\ReportReader;
 use Lab\Domain\DomainViolation;
 use Lab\Domain\User;
+use Lab\Application\DTOs\AuthenticatedIdentity;
 use Lab\Domain\UserRole;
 use Lab\Domain\ValueObjects\DateRange;
 
@@ -15,7 +16,7 @@ final readonly class MostBorrowedReportService
 {
     public function __construct(private ReportReader $reader) {}
 
-    public function execute(User $actor, string $from, string $to): array
+    public function execute(User|AuthenticatedIdentity $actor, string $from, string $to): array
     {
         if ($actor->role !== UserRole::Admin) {
             throw new DomainViolation('FORBIDDEN_ROLE', 'Solo el administrador puede consultar este reporte.');

@@ -11,6 +11,7 @@ use Lab\Application\Ports\IdGenerator;
 use Lab\Domain\DomainViolation;
 use Lab\Domain\Equipment;
 use Lab\Domain\User;
+use Lab\Application\DTOs\AuthenticatedIdentity;
 use Lab\Domain\UserRole;
 use Lab\Domain\ValueObjects\Quantity;
 use Lab\Domain\ValueObjects\Reference;
@@ -20,7 +21,7 @@ final readonly class CreateEquipmentService
 {
     public function __construct(private EquipmentRepository $equipment, private CategoryReader $categories, private IdGenerator $ids) {}
 
-    public function execute(User $actor, string $name, string $manufacturer, string $reference, string $categoryId, int $total): EquipmentData
+    public function execute(User|AuthenticatedIdentity $actor, string $name, string $manufacturer, string $reference, string $categoryId, int $total): EquipmentData
     {
         if ($actor->role !== UserRole::Admin) {
             throw new DomainViolation('FORBIDDEN_ROLE', 'Solo el administrador puede crear equipos.');

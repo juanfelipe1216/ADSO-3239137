@@ -9,6 +9,7 @@ use Lab\Application\Ports\CategoryReader;
 use Lab\Application\Ports\EquipmentRepository;
 use Lab\Domain\DomainViolation;
 use Lab\Domain\User;
+use Lab\Application\DTOs\AuthenticatedIdentity;
 use Lab\Domain\UserRole;
 use Lab\Domain\ValueObjects\Quantity;
 
@@ -16,7 +17,7 @@ final readonly class UpdateEquipmentService
 {
     public function __construct(private EquipmentRepository $equipment, private CategoryReader $categories) {}
 
-    public function execute(User $actor, string $id, string $name, string $manufacturer, string $categoryId, int $total): EquipmentData
+    public function execute(User|AuthenticatedIdentity $actor, string $id, string $name, string $manufacturer, string $categoryId, int $total): EquipmentData
     {
         if ($actor->role !== UserRole::Admin) {
             throw new DomainViolation('FORBIDDEN_ROLE', 'Solo el administrador puede editar equipos.');

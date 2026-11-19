@@ -8,15 +8,21 @@ use Symfony\Component\HttpKernel\Exception\HttpExceptionInterface;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(api: __DIR__.'/../routes/api.php', apiPrefix: 'api/v1')
-    ->withMiddleware(function (Middleware $middleware): void {})
+    ->withMiddleware(function (Middleware $middleware): void {
+        $middleware->remove([\Illuminate\Foundation\Http\Middleware\TrimStrings::class,
+            \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class]);
+    })
     ->withExceptions(function (Exceptions $exceptions): void {
+        $exceptions->dontReport([\Lab\Domain\DomainViolation::class]);
         $exceptions->render(function (Throwable $exception, Request $request) {
             if ($exception instanceof \Lab\Domain\DomainViolation) {
                 $status = match ($exception->errorCode) {
-                    'UNAUTHENTICATED' => 401,
+                    'UNAUTHENTICATED', 'INVALID_CREDENTIALS' => 401,
+                    'FORBIDDEN_ROLE' => 403,
                     'NOT_FOUND' => 404,
-                    'EQUIPMENT_NOT_AVAILABLE', 'ITEM_ALREADY_RETURNED', 'RESEARCHER_HAS_OVERDUE' => 409,
-                    'VALIDATION_ERROR', 'RESEARCHER_LIMIT_EXCEEDED', 'DUPLICATE_EQUIPMENT_IN_LOAN' => 422,
+                    'EQUIPMENT_NOT_AVAILABLE', 'ITEM_ALREADY_RETURNED', 'RESEARCHER_HAS_OVERDUE',
+                    'USERNAME_TAKEN', 'REFERENCE_TAKEN', 'DOCUMENT_TAKEN', 'EQUIPMENT_HAS_OPEN_LOANS' => 409,
+                    'VALIDATION_ERROR', 'INVALID_DATE_RANGE', 'RESEARCHER_LIMIT_EXCEEDED', 'DUPLICATE_EQUIPMENT_IN_LOAN' => 422,
                     default => null,
                 };
                 if ($status !== null) {
@@ -28,6 +34,7 @@ return Application::configure(basePath: dirname(__DIR__))
             }
             $status = $exception instanceof HttpExceptionInterface ? $exception->getStatusCode() : 500;
             [$code, $message] = match ($status) {
+                413 => ['PAYLOAD_TOO_LARGE', 'La solicitud supera el tamaño permitido.'],
                 404 => ['NOT_FOUND', 'El recurso solicitado no existe.'],
                 405 => ['METHOD_NOT_ALLOWED', 'El método solicitado no está permitido.'],
                 default => ['INTERNAL_ERROR', 'No se pudo completar la solicitud.'],

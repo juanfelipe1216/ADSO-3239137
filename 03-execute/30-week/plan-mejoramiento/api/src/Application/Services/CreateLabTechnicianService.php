@@ -9,6 +9,7 @@ use Lab\Application\Ports\PasswordHasher;
 use Lab\Application\Ports\UserRepository;
 use Lab\Domain\DomainViolation;
 use Lab\Domain\User;
+use Lab\Application\DTOs\AuthenticatedIdentity;
 use Lab\Domain\UserRole;
 use SensitiveParameter;
 
@@ -21,7 +22,7 @@ final readonly class CreateLabTechnicianService
     ) {}
 
     public function execute(
-        User $actor,
+        User|AuthenticatedIdentity $actor,
         string $username,
         #[SensitiveParameter] string $password,
         string $role,

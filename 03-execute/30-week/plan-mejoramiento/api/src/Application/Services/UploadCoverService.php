@@ -10,13 +10,14 @@ use Lab\Application\Ports\CoverStorage;
 use Lab\Application\Ports\EquipmentRepository;
 use Lab\Domain\DomainViolation;
 use Lab\Domain\User;
+use Lab\Application\DTOs\AuthenticatedIdentity;
 use Lab\Domain\UserRole;
 
 final readonly class UploadCoverService
 {
     public function __construct(private EquipmentRepository $equipment, private CoverStorage $storage) {}
 
-    public function execute(User $actor, string $id, string $bytes): EquipmentData
+    public function execute(User|AuthenticatedIdentity $actor, string $id, string $bytes): EquipmentData
     {
         if ($actor->role !== UserRole::Admin) {
             throw new DomainViolation('FORBIDDEN_ROLE', 'Solo el administrador puede cambiar fotografías.');
