@@ -2,6 +2,7 @@
 .env.*
 !.env.example
 node_modules/
+!app/package-lock.json
 vendor/
 dist/
 coverage/
