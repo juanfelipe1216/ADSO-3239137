@@ -23,6 +23,7 @@ services:
     environment:
       APP_ENV: local
       APP_DEBUG: "false"
+      DEMO_CLOCK_FILE: ${DEMO_CLOCK_FILE:-}
       ADMIN_USERNAME: ${ADMIN_USERNAME:?Define ADMIN_USERNAME en .env}
       ADMIN_PASSWORD: ${ADMIN_PASSWORD:?Define ADMIN_PASSWORD en .env}
       CORS_ORIGIN: ${CORS_ORIGIN:-}

@@ -37,6 +37,10 @@ final class LabServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
+        $demoFile = (string) config('lab.demo_clock_file');
+        if ($demoFile !== '' && !$this->app->environment('testing')) {
+            throw new \RuntimeException('El reloj de demostración requiere un entorno de pruebas aislado.');
+        }
         $this->app->singleton(IdGenerator::class, UuidGenerator::class);
         $this->app->singleton(TransactionManager::class, fn ($app) => new PostgresTransactionManager($app['db']->connection()));
         $this->app->singleton(PostgresLoanRepository::class, fn ($app) => new PostgresLoanRepository($app['db']->connection()));
@@ -51,7 +55,11 @@ final class LabServiceProvider extends ServiceProvider
         $this->app->alias(PostgresEquipmentRepository::class, EquipmentReader::class);
         $this->app->singleton(CategoryReader::class, fn ($app) => new PostgresCategories($app['db']->connection()));
         $this->app->singleton(ReportReader::class, fn ($app) => new PostgresReportReader($app['db']->connection()));
-        $this->app->singleton(Clock::class, SystemClock::class);
+        if ($demoFile !== '') {
+            $this->app->singleton(Clock::class, fn () => new \Lab\Adapters\Time\DemoFileClock($demoFile, 'testing'));
+        } else {
+            $this->app->singleton(Clock::class, SystemClock::class);
+        }
         $this->app->singleton(PasswordHasher::class, ArgonPasswordHasher::class);
         $this->app->singleton(CoverStorage::class, fn () => new LocalCoverStorage((string) config('lab.covers_dir')));
         $this->app->singleton(JwtTokens::class, fn ($app) => new JwtTokens((string) config('lab.jwt_secret'), $app->make(Clock::class)));
