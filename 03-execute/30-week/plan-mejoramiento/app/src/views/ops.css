@@ -1,0 +1,20 @@
+.ops h2{margin-top:0}.ops h3{font-size:18px;margin:28px 0 10px}
+.ops .toolbar{display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end;margin-bottom:16px}
+.ops .toolbar label{display:grid;gap:4px;font-size:13px}.ops .toolbar input,.ops .toolbar select{margin:0;width:auto;min-width:150px}
+.ops select{border:1px solid #b7c6bf;border-radius:8px;padding:11px;background:#fff;color:#183d38;font:inherit}
+.ops .toolbar button,.ops form button{margin:0}
+.ops .card{background:#fff;border:1px solid #dee5dc;border-radius:12px;padding:16px;margin-bottom:12px}
+.ops .card header{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;margin-bottom:8px;font-size:14px}
+.ops .badge{display:inline-block;border-radius:999px;padding:2px 10px;font-size:12px;font-weight:700;background:#eaf3e0;color:#164c43}
+.ops .badge.overdue{background:#fff0ec;color:#a62d24}.ops .badge.closed{background:#eceeea;color:#526760}
+.ops .lines{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.ops .lines li{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;align-items:center;border-top:1px solid #eef1ea;padding-top:8px;font-size:14px}
+.ops .lines button,.ops td button{margin:0;padding:7px 12px;font-size:13px}
+.ops .picker-results{list-style:none;margin:0 0 10px;padding:0;display:grid;gap:6px}
+.ops .picker-results button{width:100%;text-align:left;background:#fff;color:#183d38;border:1px solid #dee5dc;margin:0}
+.ops .picked{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 12px;padding:0;list-style:none}
+.ops .picked li{background:#eaf3e0;border-radius:999px;padding:4px 6px 4px 12px;font-size:14px}
+.ops .picked button{margin:0 0 0 6px;padding:2px 8px;background:transparent;color:#a62d24}
+.ops .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media(max-width:720px){.ops .grid-2{grid-template-columns:1fr}.ops .toolbar input,.ops .toolbar select{width:100%}}

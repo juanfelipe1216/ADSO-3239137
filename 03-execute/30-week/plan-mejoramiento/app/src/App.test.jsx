@@ -7,7 +7,9 @@ import App from './App.jsx';
 afterEach(() => { cleanup(); vi.unstubAllGlobals(); });
 
 it('logs in with entered credentials and clears the session on logout', async () => {
-  const fetch = vi.fn().mockResolvedValue({ ok: true, status: 200, json: async () => ({ access_token: 'test-token', role: 'admin', expires_in: 28800 }) });
+  const fetch = vi.fn(async path => ({ ok: true, status: 200, json: async () => String(path).endsWith('/auth/login')
+    ? { access_token: 'test-token', role: 'admin', expires_in: 28800 }
+    : { items: [], page: 1, size: 20, total: 0 } }));
   vi.stubGlobal('fetch', fetch);
   const user = userEvent.setup();
   render(<App />);
