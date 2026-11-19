@@ -23,6 +23,8 @@ services:
     environment:
       APP_ENV: local
       APP_DEBUG: "false"
+      ADMIN_USERNAME: ${ADMIN_USERNAME:?Define ADMIN_USERNAME en .env}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:?Define ADMIN_PASSWORD en .env}
       CORS_ORIGIN: ${CORS_ORIGIN:-}
       JWT_SECRET: ${JWT_SECRET:-}
       COVERS_DIR: /app/storage/covers
@@ -35,7 +37,7 @@ services:
         condition: service_healthy
     volumes:
       - covers:/app/storage/covers
-    command: ["sh", "-c", "php artisan migrate --force && exec env PHP_CLI_SERVER_WORKERS=2 php artisan serve --no-reload --host=0.0.0.0 --port=8000"]
+    command: ["sh", "-c", "php artisan migrate --force && php artisan lab:bootstrap-admin && exec env PHP_CLI_SERVER_WORKERS=2 php artisan serve --no-reload --host=0.0.0.0 --port=8000"]
     healthcheck:
       test: ["CMD", "php", "-r", "exit(file_get_contents('http://127.0.0.1:8000/api/v1/health') === '{\"status\":\"ok\"}' ? 0 : 1);"]
       interval: 10s

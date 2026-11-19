@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Symfony\Component\HttpKernel\Exception\HttpExceptionInterface;
 
 return Application::configure(basePath: dirname(__DIR__))
+    ->withCommands([\App\Console\Commands\BootstrapAdmin::class])
     ->withRouting(api: __DIR__.'/../routes/api.php', apiPrefix: 'api/v1')
     ->withMiddleware(function (Middleware $middleware): void {
         $middleware->remove([\Illuminate\Foundation\Http\Middleware\TrimStrings::class,
