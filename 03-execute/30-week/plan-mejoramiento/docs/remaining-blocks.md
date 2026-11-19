@@ -29,7 +29,7 @@ Los doce bloques del 17 **no caben en el horario original de 19:00 a 22:00**. Es
 | B15 | 17, tercer tramo | T-22: flujos React | Roles, catálogo, fotos, investigadores, préstamos, devolución, vencidos, reporte y errores | Verificado el 19: 31 pruebas React y recorrido real aislado; ver evidencia B15 |
 | B16 | 17, tercer tramo | T-23: página pública y cierre del producto | Sin API, escritorio/375 px, reglas/roles/vencidos; recorrido transversal y todas las tareas comprobadas | Página verificada el 19 (ver evidencia B16); el recorrido transversal final queda en B18 |
 | B17 | 18 | Revisión del proyecto formativo, obligatoria aparte | Evidencia de secciones 00-06 y congruencia; corregir brechas reales y señalar lo no resuelto | Revisión de lectura hecha el 19 (nueve brechas registradas); correcciones sin aplicar, ver evidencia B17 |
-| B18 | 18 | Reproducción final y auditoría del plan | Instalación aislada, pruebas, idioma, secretos, documentación e historial por carpeta/fecha | Pendiente |
+| B18 | 18 | Reproducción final y auditoría del plan | Instalación aislada, pruebas, idioma, secretos, documentación e historial por carpeta/fecha | Auditoría del 19 hecha (pruebas, instalación aislada, secretos, idioma); pendientes abiertos en la evidencia B18 |
 
 Al 18 de noviembre, B08 quedó cerrado con fakes y B09 con fakes y lector PostgreSQL; B10 y B11 quedaron verificados por HTTP; B15-B18 siguen pendientes de cierre. El objetivo interno de terminar el producto el 17 no se alcanzó; el trabajo de B08-B11 realizado el 18 se registra como desarrollo, no como revisión. Las fechas objetivo de la tabla conservan el plan original y no sustituyen las fechas de evidencia ni las de Git.
 
