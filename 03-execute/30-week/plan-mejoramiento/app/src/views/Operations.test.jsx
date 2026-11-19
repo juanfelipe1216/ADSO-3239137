@@ -98,6 +98,10 @@ it('registers a loan with at most two available items and refreshes the history'
   await user.click(screen.getByRole('button', { name: 'Registrar préstamo' }));
 
   expect(await screen.findByText('Préstamo registrado para Ana Pérez.')).toBeTruthy();
+  // The success message must not linger once a new loan is started.
+  await user.type(screen.getByLabelText('Investigador'), 'ana');
+  await user.click(await screen.findByRole('button', { name: /Ana Pérez · 123/ }));
+  expect(screen.queryByText('Préstamo registrado para Ana Pérez.')).toBeNull();
   const post = fetch.mock.calls.find(([url, options]) => String(url).endsWith('/loans') && options?.method === 'POST');
   expect(JSON.parse(post[1].body)).toEqual({ researcher_id: 'r1', items: [{ equipment_id: 'e1' }, { equipment_id: 'e3' }] });
 });

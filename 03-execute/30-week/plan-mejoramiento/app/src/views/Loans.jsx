@@ -16,6 +16,7 @@ function NewLoan({ token, onCreated }) {
   const [notice, setNotice] = useState('');
 
   function addEquipment(item) {
+    setNotice('');
     setEquipment(current => (current.length >= MAX_ITEMS || current.some(entry => entry.id === item.id) ? current : [...current, item]));
   }
 
@@ -40,7 +41,7 @@ function NewLoan({ token, onCreated }) {
     {researcher
       ? <p>Investigador: <strong>{researcher.full_name}</strong> ({researcher.document_number}) <button type="button" className="ghost" onClick={() => setResearcher(null)}>Cambiar</button></p>
       : <SearchPicker id="loan-researcher" label="Investigador" path="/researchers" token={token}
-        describe={item => `${item.full_name} · ${item.document_number}`} onPick={setResearcher} />}
+        describe={item => `${item.full_name} · ${item.document_number}`} onPick={item => { setNotice(''); setResearcher(item); }} />}
     <SearchPicker id="loan-equipment" label={`Equipos (máximo ${MAX_ITEMS})`} path="/equipment" token={token}
       describe={item => `${item.name} · ${item.reference} · ${item.available_units} disponibles`}
       isDisabled={item => item.available_units < 1 || equipment.length >= MAX_ITEMS || equipment.some(entry => entry.id === item.id)}
